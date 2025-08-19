@@ -1,4 +1,4 @@
-
+<!-- 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -146,5 +146,116 @@ async function loadQuestions() {
 loadQuestions();
 </script>
 
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SheHealth - Question</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    margin: 0;
+    padding: 0;
+  }
+  #question-container {
+    max-width: 700px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+  }
+  #comments {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+  }
+  .comment {
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    background: #e1f5fe;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  input[type="text"] {
+    width: calc(100% - 80px);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  button {
+    width: 60px;
+    padding: 10px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #0288d1;
+    color: #fff;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #026ca0;
+  }
+</style>
+</head>
+<body>
+<div id="question-container">
+  <h2 id="questionTitle">Question Title Here</h2>
+  <div id="comments"></div>
+  <input type="text" id="commentInput" placeholder="Add a comment...">
+  <button onclick="sendComment()">Send</button>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+const socket = io();
+const commentsDiv = document.getElementById("comments");
+const input = document.getElementById("commentInput");
+
+// Load existing comments
+socket.on("loadComments", comments => {
+  commentsDiv.innerHTML = "";
+  comments.forEach(c => addCommentToDOM(c));
+});
+
+// New comment
+socket.on("newComment", c => addCommentToDOM(c));
+
+// Update upvotes
+socket.on("updateComment", c => {
+  const div = document.querySelector(`[data-id='${c._id}']`);
+  if(div) div.textContent = c.text + " (Upvotes: " + c.upvotes + ")";
+});
+
+function addCommentToDOM(c) {
+  const div = document.createElement("div");
+  div.className = "comment";
+  div.setAttribute("data-id", c._id);
+  div.textContent = c.text + " (Upvotes: " + c.upvotes + ")";
+  div.onclick = () => socket.emit("upvoteComment", c._id);
+  commentsDiv.appendChild(div);
+}
+
+function sendComment() {
+  const text = input.value.trim();
+  if(!text) return;
+  socket.emit("sendComment", text);
+  input.value = "";
+}
+
+input.addEventListener("keypress", e => {
+  if(e.key === "Enter") sendComment();
+});
+</script>
 </body>
 </html>
