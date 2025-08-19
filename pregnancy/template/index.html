@@ -1,0 +1,207 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pregnancy Food Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 400px;
+    }
+    h2 {
+      color: #7f56da;
+      margin-bottom: 15px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #7f56da;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    button:hover {
+      background: #5b3aa2;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>👩‍🍼 Pregnancy Food Checker</h2>
+    <form method="POST">
+      <input type="text" name="food" placeholder="Enter food (e.g. papaya)" required>
+      <br>
+      <button type="submit">Check</button>
+    </form>
+    {% if result %}
+      <div class="result">{{ result }}</div>
+    {% endif %}
+  </div>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pregnancy Food Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 400px;
+    }
+    h2 {
+      color: #7f56da;
+      margin-bottom: 15px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #7f56da;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    button:hover {
+      background: #5b3aa2;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+    .category {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .good { background: #d4edda; color: #155724; }
+    .moderate { background: #fff3cd; color: #856404; }
+    .avoid { background: #f8d7da; color: #721c24; }
+    .unknown { background: #e2e3e5; color: #383d41; }
+    .suggestions {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #666;
+    }
+    .suggestions span {
+      background: #f1f1f1;
+      padding: 5px 10px;
+      border-radius: 6px;
+      margin: 3px;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .suggestions span:hover {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>👩‍🍼 Pregnancy Food Checker</h2>
+    
+    <input type="text" id="foodInput" placeholder="Enter food (e.g. papaya)" required>
+    <br>
+    <button onclick="checkFood()">Check</button>
+    
+    <div id="result" class="result"></div>
+    <div id="category" class="category"></div>
+    <div id="suggestions" class="suggestions"></div>
+  </div>
+
+  <script>
+    async function checkFood() {
+      const food = document.getElementById("foodInput").value.trim();
+      if (!food) {
+        document.getElementById("result").innerText = "⚠️ Please enter a food name.";
+        document.getElementById("category").innerText = "";
+        document.getElementById("suggestions").innerText = "";
+        return;
+      }
+
+      const res = await fetch("/api/check_food", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ food })
+      });
+      const data = await res.json();
+
+      document.getElementById("result").innerText = data.status + " - " + data.message;
+
+      // Category badge
+      const catDiv = document.getElementById("category");
+      catDiv.innerText = data.category;
+      catDiv.className = "category " + data.category.toLowerCase();
+
+      // Suggestions
+      const sugDiv = document.getElementById("suggestions");
+      if (data.suggestions && data.suggestions.length > 0) {
+        sugDiv.innerHTML = "Did you mean? " + data.suggestions.map(s => `<span onclick="useSuggestion('${s}')">${s}</span>`).join(" ");
+      } else {
+        sugDiv.innerHTML = "";
+      }
+    }
+
+    function useSuggestion(food) {
+      document.getElementById("foodInput").value = food;
+      checkFood();
+    }
+  </script>
+</body>
+</html>
