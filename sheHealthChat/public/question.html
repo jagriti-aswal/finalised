@@ -1,0 +1,150 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questions - SheHealth</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3e9fb;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h2 {
+      text-align: center;
+      color: #6d28d9;
+      margin-bottom: 20px;
+    }
+    .question-card {
+      background: #fdfcfe;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .question-title {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    .question-body {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .question-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #555;
+    }
+    .upvote-btn {
+      background: #6d28d9;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .upvote-btn.upvoted {
+      background: #7c3aed;
+    }
+    .comment-count {
+      font-style: italic;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 6px 12px;
+      background: #6d28d9;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .back-btn:hover {
+      background: #7c3aed;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a class="back-btn" href="index.html">← Back to Chat</a>
+  <h2>Questions</h2>
+  <div id="questionsList"></div>
+</div>
+
+<script>
+const userId = localStorage.getItem('userId') || 'User_' + Math.floor(Math.random() * 10000);
+localStorage.setItem('userId', userId);
+
+async function loadQuestions() {
+  try {
+    const res = await fetch('/api/questions');
+    if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+    const data = await res.json();
+    const container = document.getElementById('questionsList');
+    container.innerHTML = '';
+
+    data.questions.forEach(q => {
+      const div = document.createElement('div');
+      div.className = 'question-card';
+      
+      const hasUpvoted = q.upvotes.includes(userId);
+      
+      div.innerHTML = `
+        <div class="question-title">${q.title}</div>
+        <div class="question-body">${q.body}</div>
+        <div class="question-meta">
+          <button class="upvote-btn ${hasUpvoted ? 'upvoted' : ''}" data-id="${q._id}">
+            ▲ Upvote (${q.upvotes.length})
+          </button>
+          <span class="comment-count">💬 ${q.comments.length} comments</span>
+        </div>
+      `;
+      
+      container.appendChild(div);
+    });
+
+    document.querySelectorAll('.upvote-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const id = btn.getAttribute('data-id');
+        try {
+          const res = await fetch(`/api/questions/upvote/${id}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId })
+          });
+          const data = await res.json();
+          if (data.success) {
+            loadQuestions();
+          } else {
+            console.error('Error upvoting:', data.message);
+            alert(`Error upvoting: ${data.message || 'Unknown error'}`);
+          }
+        } catch (err) {
+          console.error('Network or server error:', err);
+          alert('Failed to upvote. Please check your connection and try again.');
+        }
+      });
+    });
+  } catch (err) {
+    console.error('Error loading questions:', err);
+    alert('Failed to load questions. Please check your connection and try again.');
+  }
+}
+
+loadQuestions();
+</script>
+
+</body>
+</html>

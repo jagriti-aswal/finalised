@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ask a Question - SheHealth</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3e9fb;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    h2 {
+      text-align: center;
+      color: #6d28d9;
+      margin-bottom: 20px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      background: #ede9fe;
+    }
+    button {
+      background: #6d28d9;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #7c3aed;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Ask a Question</h2>
+  <input type="text" id="questionTitle" placeholder="Question Title" required>
+  <textarea id="questionBody" placeholder="Question Details" rows="5" required></textarea>
+  <button onclick="submitQuestion()">Post Question</button>
+</div>
+
+<script>
+const userId = localStorage.getItem('userId') || 'User_' + Math.floor(Math.random() * 10000);
+localStorage.setItem('userId', userId);
+
+async function submitQuestion() {
+  const title = document.getElementById('questionTitle').value.trim();
+  const body = document.getElementById('questionBody').value.trim();
+  if (!title || !body) {
+    alert('Please fill both fields');
+    return;
+  }
+
+  try {
+    const res = await fetch('/api/questions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, body, username: userId })
+    });
+    const data = await res.json();
+    if (data.success) {
+      alert('Question posted successfully!');
+      window.location.href = 'question.html';
+    } else {
+      console.error('Error posting question:', data.message);
+      alert(`Error posting question: ${data.message || 'Unknown error'}`);
+    }
+  } catch (err) {
+    console.error('Network or server error:', err);
+    alert('Failed to post question. Please check your connection and try again.');
+  }
+}
+</script>
+
+</body>
+</html>
