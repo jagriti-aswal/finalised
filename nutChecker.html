@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Purple Nutrition Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple-1: #a855f7; /* primary */
+      --purple-2: #7c3aed; /* dark */
+      --purple-3: #c084fc; /* light */
+      --bg: #0b0a12;
+      --card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.12);
+      --text: #f7f7fb;
+      --muted: #cfcfe6;
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --err: #ef4444;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 10% 0%, rgba(168,85,247,.25), transparent 40%),
+                  radial-gradient(1200px 800px at 90% 10%, rgba(124,58,237,.20), transparent 40%),
+                  linear-gradient(180deg, #0c0a1a 0%, #090815 40%, #090712 100%);
+    }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 48px; }
+    header {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 18px; border: 1px solid var(--border); background: var(--card);
+      backdrop-filter: blur(10px); border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: conic-gradient(from 180deg at 50% 50%, var(--purple-3), var(--purple-1), var(--purple-2));
+      box-shadow: inset 0 0 12px rgba(255,255,255,.25), 0 6px 18px rgba(124,58,237,.45);
+    }
+    h1 { font-size: 1.35rem; margin: 0; font-weight: 700; letter-spacing: 0.2px; }
+    .tag { color: var(--muted); font-size: .9rem; }
+
+    .card { margin-top: 18px; padding: 18px; background: var(--card); border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    @media (min-width: 800px) { .grid { grid-template-columns: 2fr 1fr; } }
+
+    label { font-size: .9rem; color: var(--muted); margin-bottom: 6px; display: block; }
+    input[type="text"], input[type="password"] {
+      width: 100%; padding: 14px 14px; border-radius: 14px; outline: none; border: 1px solid var(--border);
+      background: rgba(255,255,255,.04); color: var(--text); font-size: 1rem;
+    }
+    input::placeholder { color: #bdbdd3; }
+
+    .row { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 600px) { .row { grid-template-columns: 1fr 1fr; } }
+
+    .actions { display: flex; gap: 10px; align-items: center; }
+    button {
+      appearance: none; border: 0; cursor: pointer; padding: 12px 16px; border-radius: 14px; font-weight: 600;
+      background: linear-gradient(135deg, var(--purple-1), var(--purple-2)); color: white;
+      box-shadow: 0 10px 20px rgba(124,58,237,.35), inset 0 0 0 1px rgba(255,255,255,.08);
+      transition: transform .04s ease, box-shadow .2s ease; letter-spacing: .2px;
+    }
+    button.secondary { background: rgba(255,255,255,.06); box-shadow: inset 0 0 0 1px var(--border); color: var(--muted); }
+    button:active { transform: translateY(1px) scale(0.99); box-shadow: 0 6px 16px rgba(124,58,237,.3); }
+
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border); background: rgba(255,255,255,.05); font-size: .85rem; color: var(--muted); }
+
+    .results { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 10px; }
+    @media (min-width: 700px) { .results { grid-template-columns: 1fr 1fr; } }
+
+    .food { padding: 16px; border-radius: 16px; border: 1px solid var(--border); background: rgba(255,255,255,.04); }
+    .food h3 { margin: 0 0 8px 0; font-size: 1.1rem; }
+    .meta { font-size: .9rem; color: var(--muted); margin-bottom: 10px; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .stat { padding: 10px 12px; border-radius: 12px; background: rgba(255,255,255,.04); border: 1px solid var(--border); text-align: center; }
+    .stat .k { display: block; font-size: .9rem; color: var(--muted); }
+    .stat .v { font-weight: 700; font-size: 1.05rem; }
+
+    .hint { font-size: .9rem; color: var(--muted); }
+    .error { color: #fecaca; background: rgba(239,68,68,.12); border: 1px solid rgba(239,68,68,.35); padding: 10px 12px; border-radius: 12px; }
+    .loader { display: inline-block; width: 18px; height: 18px; border: 3px solid rgba(255,255,255,.35); border-top-color: white; border-radius: 50%; animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    footer { margin-top: 28px; text-align: center; color: var(--muted); font-size: .85rem; }
+    a { color: var(--purple-3); text-decoration: none; }
+    .tiny { font-size: .8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Nutrition Finder</h1>
+          <div class="tag">Search nutrition for foods like <em>“2 chapati and 1 bowl dal”</em></div>
+        </div>
+      </div>
+      <span class="pill">Know What You Eat</span>
+    </header>
+
+    <section class="card">
+      <div class="grid">
+        <div>
+          <label for="query">Food Query</label>
+          <input id="query" type="text" placeholder="e.g. 2 chapati and 1 bowl dal" />
+        </div>
+        <div class="row">
+          <div>
+            <label for="appId">Nutritionix APP ID</label>
+            <input id="appId" type="text" placeholder="your_app_id" value="1bda56d7" />
+          </div>
+          <div>
+            <label for="appKey">Nutritionix APP KEY</label>
+            <input id="appKey" type="password" placeholder="your_app_key" value="
+17f372dc5f48889f6211243f6ef84328" />
+          </div>
+        </div>
+      </div>
+
+      <div style="height:12px"></div>
+      <div class="actions">
+        <button id="searchBtn">Get Nutrition</button>
+        <button class="secondary" id="demoBtn" title="Try with demo query">Try Demo</button>
+        <span class="hint">No account? <a href="https://developer.nutritionix.com/" target="_blank" rel="noreferrer">Get free API keys</a>.</span>
+      </div>
+
+      <div style="height:12px"></div>
+      <div id="state"></div>
+      <div class="results" id="results"></div>
+    </section>
+
+    <footer>
+      Built for quick demos · Values shown are returned by the Nutritionix Natural Language endpoint.
+      <div class="tiny">Tip: Keep API keys on the server for production. This page is for learning/testing.</div>
+    </footer>
+  </div>
+
+  <script>
+    const qs = (s) => document.querySelector(s);
+    const elQuery = qs('#query');
+    const elAppId = qs('#appId');
+    const elAppKey = qs('#appKey');
+    const elBtn = qs('#searchBtn');
+    const elDemo = qs('#demoBtn');
+    const elState = qs('#state');
+    const elResults = qs('#results');
+
+    elDemo.addEventListener('click', () => {
+      elQuery.value = '2 chapati and 1 bowl dal';
+    });
+
+    elBtn.addEventListener('click', async () => {
+      const query = elQuery.value.trim();
+      const appId = elAppId.value.trim();
+      const appKey = elAppKey.value.trim();
+
+      if (!query) return setState('Please enter a food query.', 'warn');
+      if (!appId || !appKey) return setState('Enter your Nutritionix APP ID and APP KEY.', 'warn');
+
+      setState('Fetching nutrition…', 'loading');
+      elResults.innerHTML = '';
+
+      try {
+        const res = await fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
+          method: 'POST',
+          headers: {
+            'x-app-id': appId,
+            'x-app-key': appKey,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ query, timezone: 'Asia/Kolkata' })
+        });
+
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(res.status + ' ' + text);
+        }
+
+        const data = await res.json();
+        const foods = data.foods || [];
+        if (!foods.length) {
+          setState('No results. Try a simpler query like "1 cup rice" or "2 rotis".', 'warn');
+          return;
+        }
+
+        setState(`${foods.length} item(s) found.`);
+        foods.forEach(renderFood);
+      } catch (err) {
+        console.error(err);
+        setState('Error: ' + err.message, 'error');
+      }
+    });
+
+    function renderFood(food) {
+      const card = document.createElement('div');
+      card.className = 'food';
+
+      const name = cap(food.food_name || 'item');
+      const qty = food.serving_qty ?? '-';
+      const unit = food.serving_unit || '';
+
+      const cals = round(food.nf_calories);
+      const protein = round(food.nf_protein);
+      const fat = round(food.nf_total_fat);
+      const carbs = round(food.nf_total_carbohydrate);
+
+      card.innerHTML = `
+        <h3>${name}</h3>
+        <div class="meta">Serving: <strong>${qty} ${unit}</strong></div>
+        <div class="stats">
+          <div class="stat"><span class="k">Calories</span><span class="v">${cals} kcal</span></div>
+          <div class="stat"><span class="k">Protein</span><span class="v">${protein} g</span></div>
+          <div class="stat"><span class="k">Fat</span><span class="v">${fat} g</span></div>
+          <div class="stat"><span class="k">Carbs</span><span class="v">${carbs} g</span></div>
+        </div>
+      `;
+
+      elResults.appendChild(card);
+    }
+
+    function setState(msg, type) {
+      if (!msg) { elState.innerHTML = ''; return; }
+      if (type === 'loading') {
+        elState.innerHTML = `<span class="pill"><span class="loader"></span> ${msg}</span>`;
+      } else if (type === 'error') {
+        elState.innerHTML = `<div class="error">${msg}</div>`;
+      } else if (type === 'warn') {
+        elState.innerHTML = `<div class="pill" style="border-color:#f59e0b;color:#fcd34d;background:rgba(251,191,36,.08)">⚠️ ${msg}</div>`;
+      } else {
+        elState.innerHTML = `<span class="pill">${msg}</span>`;
+      }
+    }
+
+    const round = (n) => (n != null ? Math.round(n * 10) / 10 : '-')
+    const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1)
+  </script>
+</body>
+</html>
