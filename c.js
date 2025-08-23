@@ -1,32 +1,3 @@
-// Home Button JavaScript
-document.getElementById("homeButton").addEventListener("click", function () {
-  // Option 1: Go to root of current domain
-  window.location.href = "/";
-
-  // Option 2: Go to specific home page (uncomment and modify as needed)
-  // window.location.href = '/index.html';
-
-  // Option 3: Go to specific URL (uncomment and modify as needed)
-  // window.location.href = 'https://yourdomain.com';
-});
-
-// Optional: Add smooth scroll to top functionality
-function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-}
-
-// Optional: Show/hide button based on scroll position
-window.addEventListener("scroll", function () {
-  const homeButton = document.getElementById("homeButton");
-  if (window.scrollY > 100) {
-    homeButton.style.opacity = "0.9";
-  } else {
-    homeButton.style.opacity = "1";
-  }
-});
 // Toggle guideline content
 function toggleGuideline(header) {
   const content = header.nextElementSibling;
@@ -104,22 +75,24 @@ async function fetchHospitals(location) {
   }));
 }
 
+
 // // Example usage:
 // fetchHospitals("Gurgaon").then((hospitals) => {
 //   console.log("Hospitals:", hospitals);
 // });
 
+
 async function findHospitals() {
   const location = document.getElementById("locationInput").value.trim();
   const resultsContainer = document.getElementById("hospitalsResults");
-  if (!location) {
-    alert("Please enter a location to search for hospitals.");
-    return;
-  }
+ if (!location) {
+   alert("Please enter a location to search for hospitals.");
+   return;
+ }
 
   // Google Places
   const hospitals = await fetchHospitals(location);
-  resultsContainer.innerHTML = `
+ resultsContainer.innerHTML = `
         <div class="loading-state">
             <div class="loading-spinner"></div>
             <p>Searching for hospitals in ${location}...</p>
@@ -138,10 +111,10 @@ function displayHospitals(hospitals, location) {
             <h3>Hospitals found in <span style="color:#667eea">${location}</span></h3>
             <div class="hospitals-grid">
     `;
-  if (hospitals.length == 0) {
+if(hospitals.length==0) {
     resultsContainer.innerHTML = `<p>No hospitals found</p>`;
     return;
-  }
+}
   hospitals.forEach((hospital) => {
     hospitalsHTML += `
       <div class="hospital-card">
@@ -150,18 +123,16 @@ function displayHospitals(hospitals, location) {
         </div>
         <h4>${hospital.name}</h4>
         <p class="hospital-location">${
-          hospital.address ||
-          hospital.formatted_address ||
-          hospital.vicinity ||
-          location
+          hospital.address || hospital.formatted_address || hospital.vicinity || location
         }</p>
       </div>
     `;
   });
 
-  //   hospitalsHTML += `</div></div>`;
+//   hospitalsHTML += `</div></div>`;
   resultsContainer.innerHTML = hospitalsHTML;
 }
+
 
 // Display hospitals in the results container
 // function displayHospitals(hospitals, location) {
@@ -208,7 +179,7 @@ function displayHospitals(hospitals, location) {
 //   hospitalsHTML += `
 //             </div>
 //             <div class="search-note">
-//                 <p><i class="fas fa-info-circle"></i>
+//                 <p><i class="fas fa-info-circle"></i> 
 //                 For actual hospital information and real-time availability, please contact the hospitals directly or use official healthcare directories.</p>
 //             </div>
 //         </div>

@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <title>Women's Health Hub - Your Complete Wellness Companion</title>
+  <meta name="description" content="Comprehensive women's health platform with PCOS/PCOD guidance, mood tracking, smart reminders, and AI photo analysis."/>
+</head>
+<style>
+    :root{
+  --bg: #fefbff;
+  --bg-light: #f8f5ff;
+  --bg-gradient: linear-gradient(135deg, #fefbff 0%, #f0ebff 100%);
+  --card: rgba(124, 58, 237, 0.03);
+  --card-hover: rgba(124, 58, 237, 0.08);
+  --glass: rgba(255, 255, 255, 0.8);
+  --ink: #2d1b69;
+  --muted: #6b46c1;
+  --pri: #7c3aed;
+  --pri-light: #a855f7;
+  --pri-dark: #5b21b6;
+  --accent: #8b5cf6;
+  --accent-light: #a78bfa;
+  --white: #ffffff;
+  --purple-50: #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-200: #e9d5ff;
+  --purple-900: #581c87;
+  --good: #10b981;
+  --warn: #ef4444;
+  --gradient-1: linear-gradient(135deg, #7c3aed, #a855f7);
+  --gradient-2: linear-gradient(135deg, #8b5cf6, #a78bfa);
+  --gradient-3: linear-gradient(135deg, #6366f1, #8b5cf6);
+  --gradient-hero: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
+  --gradient-text: linear-gradient(135deg, #5b21b6 0%, #7c3aed 50%, #a855f7 100%);
+  --radius: 24px;
+  --blur: blur(20px);
+  --shadow-purple: 0 25px 50px rgba(124, 58, 237, 0.15);
+  --shadow-light: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Language Toggle Styles */
+.language-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+}
+
+.lang-btn {
+  background: linear-gradient(135deg, #8B5CF6, #A855F7);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 100px;
+  justify-content: center;
+}
+
+.lang-btn:hover {
+  background: linear-gradient(135deg, #7C3AED, #9333EA);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+.lang-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
+}
+
+.lang-btn i {
+  font-size: 16px;
+}
+
+/* Home Button Styles */
+.home-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: linear-gradient(135deg, #8B5CF6, #A855F7);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.home-button:hover {
+  background: linear-gradient(135deg, #7C3AED, #9333EA);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+.home-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
+}
+
+.home-button i {
+  font-size: 16px;
+}
+
+/* Responsive Design for buttons */
+@media (max-width: 768px) {
+  .language-toggle {
+    top: 15px;
+    right: 15px;
+  }
+  
+  .lang-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+    min-width: 80px;
+  }
+  
+  .lang-btn i {
+    font-size: 14px;
+  }
+  
+  .home-button {
+    top: 15px;
+    left: 15px;
+    padding: 10px 16px;
+    font-size: 13px;
+    min-width: 100px;
+  }
+  
+  .home-button i {
+    font-size: 14px;
+  }
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-gradient);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Hindi font support */
+body[data-lang="hi"] {
+  font-family: 'Noto Sans Devanagari', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Animated Background */
+.bg-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: float-around 20s infinite linear;
+}
+
+.orb-1 {
+  width: 300px;
+  height: 300px;
+  background: var(--gradient-1);
+  top: 20%;
+  left: 10%;
+  animation-duration: 25s;
+}
+
+.orb-2 {
+  width: 200px;
+  height: 200px;
+  background: var(--gradient-2);
+  top: 60%;
+  right: 15%;
+  animation-duration: 30s;
+  animation-direction: reverse;
+}
+
+.orb-3 {
+  width: 150px;
+  height: 150px;
+  background: var(--gradient-3);
+  bottom: 20%;
+  left: 20%;
+  animation-duration: 35s;
+}
+
+@keyframes float-around {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, -30px) rotate(120deg); }
+  66% { transform: translate(-20px, 20px) rotate(240deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  border-bottom: 1px solid var(--purple-100);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 60% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 900;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 30px;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  position: relative;
+}
+
+.hero h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--gradient-hero);
+  border-radius: 2px;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  color: var(--muted);
+  margin-bottom: 50px;
+  font-weight: 500;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--pri);
+  border: 2px solid transparent;
+  padding: 20px 40px;
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-purple);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.hero-cta:hover::before {
+  left: 100%;
+}
+
+.hero-cta:hover {
+  background: var(--pri-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 25px 50px rgba(124, 58, 237, 0.3);
+  border-color: var(--pri-light);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+}
+
+.scroll-arrow {
+  width: 30px;
+  height: 30px;
+  border-right: 2px solid var(--pri);
+  border-bottom: 2px solid var(--pri);
+  transform: rotate(45deg);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-10px); }
+  60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* Main Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 20px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-title h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 25px;
+  letter-spacing: -0.02em;
+}
+
+.section-title p {
+  font-size: 1.3rem;
+  color: var(--muted);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Services Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.service-card {
+  background: var(--white);
+  border: 2px solid var(--purple-100);
+  border-radius: var(--radius);
+  padding: 50px 35px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow-light);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.05), transparent);
+  transition: left 0.6s;
+}
+
+.service-card:hover::before {
+  left: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  border-color: var(--pri);
+  box-shadow: var(--shadow-purple);
+  background: var(--purple-50);
+}
+
+.service-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 35px;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.service-icon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-1);
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.service-card:nth-child(2) .service-icon::after {
+  background: var(--gradient-2);
+}
+
+.service-card:nth-child(3) .service-icon::after {
+  background: var(--gradient-3);
+}
+
+.service-card:nth-child(4) .service-icon::after {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.service-card:hover .service-icon::after {
+  opacity: 0.6;
+}
+
+.service-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover .service-icon img {
+  transform: scale(1.15);
+}
+
+.service-card h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.service-card p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.service-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--purple-100);
+  color: var(--pri-dark);
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  border: 1px solid var(--purple-200);
+}
+
+.service-card:hover .service-badge {
+  background: var(--pri);
+  color: white;
+  transform: translateY(-3px);
+  border-color: var(--pri);
+}
+
+/* Feature highlights */
+.feature-highlight {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--pri);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.service-card:hover .feature-highlight {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Footer */
+.footer {
+  background: var(--bg-light);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 60px 20px;
+  margin-top: 120px;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-hero);
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer p {
+  color: var(--muted);
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.footer-heart {
+  color: var(--pri);
+  font-size: 1.3rem;
+  display: inline-block;
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.disclaimer {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 30px;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 80vh;
+  }
+  
+  .container {
+    padding: 80px 20px;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .service-card {
+    padding: 40px 25px;
+  }
+  
+  .section-title {
+    margin-bottom: 60px;
+  }
+}
+
+/* Loading animation */
+.service-card {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.focus-visible:focus {
+  outline: 3px solid var(--pri);
+  outline-offset: 3px;
+}
+
+/* Language transition effects */
+[data-en], [data-hi] {
+  transition: opacity 0.3s ease;
+}
+
+.lang-switching [data-en], .lang-switching [data-hi] {
+  opacity: 0.7;
+}
+</style>
+<body>
+  <!-- Language Toggle Button -->
+  <div class="language-toggle">
+    <button id="languageToggle" class="lang-btn">
+      <i class="fas fa-language"></i>
+      <span id="langText">हिंदी</span>
+    </button>
+  </div>
+
+  <!-- Home Button -->
+  <a href="../front/index2.html">
+    <button class="home-button" id="homeButton">
+      <i class="fas fa-home"></i>
+      <span class="button-text" data-en="Home" data-hi="होम">Home</span>
+    </button>
+  </a>
+
+  <!-- Animated Background -->
+  <div class="bg-animation">
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 data-en="Women's Health Hub" data-hi="महिला स्वास्थ्य केंद्र">Women's Health Hub</h1>
+      <p class="hero-subtitle" data-en="Your complete digital companion for reproductive health, wellness tracking, and personalized care guidance powered by cutting-edge technology." data-hi="अत्याधुनिक तकनीक द्वारा संचालित प्रजनन स्वास्थ्य, कल्याण ट्रैकिंग और व्यक्तिगत देखभाल मार्गदर्शन के लिए आपका संपूर्ण डिजिटल साथी।">Your complete digital companion for reproductive health, wellness tracking, and personalized care guidance powered by cutting-edge technology.</p>
+      <a href="#services" class="hero-cta">
+        <span>🌟</span>
+        <span data-en="Explore Your Wellness Journey" data-hi="अपनी कल्याण यात्रा का अन्वेषण करें">Explore Your Wellness Journey</span>
+      </a>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="container" id="services">
+    <div class="section-title">
+      <h2 data-en="Comprehensive Care Suite" data-hi="व्यापक देखभाल सूट">Comprehensive Care Suite</h2>
+      <p data-en="Discover our advanced tools designed specifically for modern women's health needs—from understanding complex conditions to intelligent tracking and AI-powered insights." data-hi="आधुनिक महिलाओं की स्वास्थ्य आवश्यकताओं के लिए विशेष रूप से डिज़ाइन किए गए हमारे उन्नत उपकरणों की खोज करें—जटिल स्थितियों को समझने से लेकर बुद्धिमान ट्रैकिंग और AI-संचालित अंतर्दृष्टि तक।">Discover our advanced tools designed specifically for modern women's health needs—from understanding complex conditions to intelligent tracking and AI-powered insights.</p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="services-grid">
+      <!-- PCOS/PCOD Guide -->
+      <a href="pcosandd.html" class="service-card focus-visible">
+        <div class="feature-highlight" data-en="Expert Guide" data-hi="विशेषज्ञ गाइड">Expert Guide</div>
+        <div class="service-icon">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=200&h=200&fit=crop&crop=center" alt="PCOS PCOD Guide">
+        </div>
+        <h3 data-en="PCOS & PCOD Guide" data-hi="PCOS और PCOD गाइड">PCOS & PCOD Guide</h3>
+        <p data-en="Comprehensive, evidence-based information about Polycystic Ovary Syndrome. Expert insights on symptoms, diagnosis, treatment pathways, and lifestyle management strategies." data-hi="पॉलीसिस्टिक ओवरी सिंड्रोम के बारे में व्यापक, साक्ष्य-आधारित जानकारी। लक्षण, निदान, उपचार मार्ग और जीवनशैली प्रबंधन रणनीतियों पर विशेषज्ञ अंतर्दृष्टि।">Comprehensive, evidence-based information about Polycystic Ovary Syndrome. Expert insights on symptoms, diagnosis, treatment pathways, and lifestyle management strategies.</p>
+        <div class="service-badge">
+          <span>📚</span> 
+          <span data-en="Learn More" data-hi="और जानें">Learn More</span>
+        </div>
+      </a>
+
+      <!-- Weight & Mood Tracker -->
+      <a href="secBweightandmoodtracker.html" class="service-card focus-visible">
+        <div class="feature-highlight" data-en="Smart Tracking" data-hi="स्मार्ट ट्रैकिंग">Smart Tracking</div>
+        <div class="service-icon">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop&crop=center" alt="Weight and Mood Tracker">
+        </div>
+        <h3 data-en="Weight & Mood Tracker" data-hi="वजन और मूड ट्रैकर">Weight & Mood Tracker</h3>
+        <p data-en="Advanced wellness monitoring with intelligent analytics. Track physical changes, emotional patterns, and receive personalized insights to optimize your health journey." data-hi="बुद्धिमान विश्लेषण के साथ उन्नत कल्याण निगरानी। शारीरिक परिवर्तन, भावनात्मक पैटर्न को ट्रैक करें और अपनी स्वास्थ्य यात्रा को अनुकूलित करने के लिए व्यक्तिगत अंतर्दृष्टि प्राप्त करें।">Advanced wellness monitoring with intelligent analytics. Track physical changes, emotional patterns, and receive personalized insights to optimize your health journey.</p>
+        <div class="service-badge">
+          <span>📊</span> 
+          <span data-en="Start Tracking" data-hi="ट्रैकिंग शुरू करें">Start Tracking</span>
+        </div>
+      </a>
+
+      <!-- Smart Reminders -->
+      <a href="smartreminder.html" class="service-card focus-visible">
+        <div class="feature-highlight" data-en="AI Powered" data-hi="AI संचालित">AI Powered</div>
+        <div class="service-icon">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=200&fit=crop&crop=center" alt="Smart Reminders">
+        </div>
+        <h3 data-en="Smart Reminders" data-hi="स्मार्ट रिमाइंडर">Smart Reminders</h3>
+        <p data-en="Intelligent scheduling system that adapts to your lifestyle. Never miss medications, appointments, or wellness activities with context-aware notifications." data-hi="बुद्धिमान शेड्यूलिंग सिस्टम जो आपकी जीवनशैली के अनुकूल होता है। संदर्भ-जागरूक सूचनाओं के साथ दवाएं, अपॉइंटमेंट या कल्याण गतिविधियों को कभी न चूकें।">Intelligent scheduling system that adapts to your lifestyle. Never miss medications, appointments, or wellness activities with context-aware notifications.</p>
+        <div class="service-badge">
+          <span>🔔</span> 
+          <span data-en="Set Reminders" data-hi="रिमाइंडर सेट करें">Set Reminders</span>
+        </div>
+      </a>
+
+      <!-- AI Photo Analysis -->
+      <a href="aiphoto.html" class="service-card focus-visible">
+        <div class="feature-highlight" data-en="Cutting Edge" data-hi="अत्याधुनिक">Cutting Edge</div>
+        <div class="service-icon">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=200&h=200&fit=crop&crop=center" alt="AI Photo Analysis">
+        </div>
+        <h3 data-en="AI Photo Analysis" data-hi="AI फोटो विश्लेषण">AI Photo Analysis</h3>
+        <p data-en="Revolutionary computer vision technology for health monitoring. Document symptoms, track skin conditions, and receive instant AI-powered health insights." data-hi="स्वास्थ्य निगरानी के लिए क्रांतिकारी कंप्यूटर विज़न तकनीक। लक्षणों का दस्तावेजीकरण करें, त्वचा की स्थिति को ट्रैक करें और तत्काल AI-संचालित स्वास्थ्य अंतर्दृष्टि प्राप्त करें।">Revolutionary computer vision technology for health monitoring. Document symptoms, track skin conditions, and receive instant AI-powered health insights.</p>
+        <div class="service-badge">
+          <span>🤖</span> 
+          <span data-en="Try AI Analysis" data-hi="AI विश्लेषण आज़माएं">Try AI Analysis</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <h3 data-en="Empowering Women's Wellness" data-hi="महिलाओं के कल्याण को सशक्त बनाना">Empowering Women's Wellness</h3>
+      <p data-en="Advanced technology meets compassionate care for every woman's health journey" data-hi="हर महिला की स्वास्थ्य यात्रा के लिए उन्नत तकनीक और दयालु देखभाल का मिलन">Advanced technology meets compassionate care for every woman's health journey</p>
+      <p data-en="Made with 💜 for women's wellness worldwide" data-hi="दुनिया भर की महिलाओं के कल्याण के लिए 💜 के साथ बनाया गया">Made with <span class="footer-heart">💜</span> for women's wellness worldwide</p>
+      
+      <div class="disclaimer">
+        <strong data-en="Medical Disclaimer:" data-hi="चिकित्सा अस्वीकरण:">Medical Disclaimer:</strong> 
+        <span data-en="This platform provides educational information and digital tools for wellness tracking. Content is for informational purposes only and should not replace professional medical advice. Always consult qualified healthcare providers for medical decisions and treatment plans." data-hi="यह प्लेटफॉर्म कल्याण ट्रैकिंग के लिए शैक्षिक जानकारी और डिजिटल उपकरण प्रदान करता है। सामग्री केवल सूचनात्मक उद्देश्यों के लिए है और पेशेवर चिकित्सा सलाह का स्थान नहीं लेनी चाहिए। चिकित्सा निर्णयों और उपचार योजनाओं के लिए हमेशा योग्य स्वास्थ्य सेवा प्रदाताओं से सलाह लें।">This platform provides educational information and digital tools for wellness tracking. Content is for informational purposes only and should not replace professional medical advice. Always consult qualified healthcare providers for medical decisions and treatment plans.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Language switching functionality
+let currentLanguage = 'en';
+
+// Language toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const languageToggle = document.getElementById('languageToggle');
+  const langText = document.getElementById('langText');
+  
+  // Initialize language
+  updateLanguage();
+  
+  languageToggle.addEventListener('click', function() {
+    currentLanguage = currentLanguage === 'en' ? 'hi' : 'en';
+    updateLanguage();
+  });
+  
+  function updateLanguage() {
+    const body = document.body;
+    const elements = document.querySelectorAll('[data-en][data-hi]');
+    
+    // Add switching class for smooth transition
+    body.classList.add('lang-switching');
+    
+    // Update document language attribute
+    document.documentElement.lang = currentLanguage;
+    body.setAttribute('data-lang', currentLanguage);
+    
+    // Update all text elements
+    elements.forEach(element => {
+      const text = element.getAttribute(`data-${currentLanguage}`);
+      if (text) {
+        element.textContent = text;
+      }
+    });
+    
+    // Update toggle button text
+    langText.textContent = currentLanguage === 'en' ? 'हिंदी' : 'English';
+    
+    // Update page title and meta description
+    if (currentLanguage === 'hi') {
+      document.title = 'महिला स्वास्थ्य केंद्र - आपका संपूर्ण कल्याण साथी';
+      document.querySelector('meta[name="description"]').content = 'PCOS/PCOD मार्गदर्शन, मूड ट्रैकिंग, स्मार्ट रिमाइंडर और AI फोटो विश्लेषण के साथ व्यापक महिला स्वास्थ्य प्लेटफॉर्म।';
+    } else {
+      document.title = "Women's Health Hub - Your Complete Wellness Companion";
+      document.querySelector('meta[name="description"]').content = "Comprehensive women's health platform with PCOS/PCOD guidance, mood tracking, smart reminders, and AI photo analysis.";
+    }
+    
+    // Remove switching class after transition
+    setTimeout(() => {
+      body.classList.remove('lang-switching');
+    }, 300);
+    
+    // Store language preference
+    localStorage.setItem('preferredLanguage', currentLanguage);
+  }
+  
+  // Load saved language preference
+  const savedLanguage = localStorage.getItem('preferredLanguage');
+  if (savedLanguage && savedLanguage !== currentLanguage) {
+    currentLanguage = savedLanguage;
+    updateLanguage();
+  }
+});
+
+// Home Button JavaScript
+document.getElementById("homeButton").addEventListener("click", function () {
+  window.location.href = "../front/index2.html";
+});
+
+// Optional: Show/hide button based on scroll position
+window.addEventListener("scroll", function () {
+  const homeButton = document.getElementById("homeButton");
+  const languageToggle = document.querySelector(".language-toggle");
+  
+  if (window.scrollY > 100) {
+    homeButton.style.opacity = "0.9";
+    languageToggle.style.opacity = "0.9";
+  } else {
+    homeButton.style.opacity = "1";
+    languageToggle.style.opacity = "1";
+  }
+});
+
+// Enhanced interactions and animations
+document.addEventListener('DOMContentLoaded', function() {
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Enhanced card interactions
+  document.querySelectorAll('.service-card').forEach((card, index) => {
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-15px) scale(1.02)';
+      this.style.zIndex = '10';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0) scale(1)';
+      this.style.zIndex = '1';
+    });
+
+    // Add click ripple effect
+    card.addEventListener('click', function(e) {
+      const ripple = document.createElement('div');
+      ripple.style.position = 'absolute';
+      ripple.style.borderRadius = '50%';
+      ripple.style.background = 'rgba(124, 58, 237, 0.3)';
+      ripple.style.transform = 'scale(0)';
+      ripple.style.animation = 'ripple 0.6s linear';
+      ripple.style.left = (e.clientX - card.offsetLeft) + 'px';
+      ripple.style.top = (e.clientY - card.offsetTop) + 'px';
+      ripple.style.width = '20px';
+      ripple.style.height = '20px';
+      card.appendChild(ripple);
+
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    });
+  });
+
+  // Parallax effect for floating orbs
+  window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const orbs = document.querySelectorAll('.floating-orb');
+    orbs.forEach((orb, index) => {
+      const speed = 0.5 + (index * 0.2);
+      orb.style.transform = `translateY(${scrolled * speed}px)`;
+    });
+  });
+
+  // Intersection Observer for animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+      }
+    });
+  }, observerOptions);
+
+  // Observe service cards for scroll animations
+  document.querySelectorAll('.service-card').forEach(card => {
+    observer.observe(card);
+  });
+
+  // Image lazy loading with fade-in effect
+  document.querySelectorAll('.service-icon img').forEach(img => {
+    img.addEventListener('load', function() {
+      this.style.opacity = '1';
+      this.style.transform = 'scale(1)';
+    });
+    
+    // Set initial state for smooth loading
+    img.style.opacity = '0';
+    img.style.transform = 'scale(1.1)';
+    img.style.transition = 'all 0.5s ease';
+  });
+
+  // Analytics tracking (integrate with your analytics service)
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      const serviceName = this.querySelector('h3').textContent;
+      console.log(`User engaged with: ${serviceName}`);
+      // Add your analytics tracking here
+    });
+  });
+
+  // Add dynamic gradient effect to hero on mouse move
+  const hero = document.querySelector('.hero');
+  hero.addEventListener('mousemove', function(e) {
+    const x = (e.clientX / window.innerWidth) * 100;
+    const y = (e.clientY / window.innerHeight) * 100;
+    this.style.background = `
+      radial-gradient(circle at ${x}% ${y}%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+      white
+    `;
+  });
+
+  // Reset hero background when mouse leaves
+  hero.addEventListener('mouseleave', function() {
+    this.style.background = 'white';
+  });
+});
+
+// Add ripple animation styles
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes ripple {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
+  </script>
+</body>
+</html>

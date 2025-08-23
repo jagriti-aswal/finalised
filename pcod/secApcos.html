@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>PCOD vs PCOS — Clear Guide</title>
+  <meta name="description" content="Simple, friendly guide explaining PCOD and PCOS, symptoms, differences, when to see a doctor, and treatment options."/>
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --pri:#6d5bd0;
+      --pri-600:#5b49c6;
+      --accent:#f59e0b;
+      --good:#10b981;
+      --warn:#ef4444;
+      --ring: rgba(109,91,208,.15);
+      --shadow: 0 10px 30px rgba(31,41,55,.08);
+      --radius:16px;
+    }
+/* Home Button Styles */
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #8B5CF6, #A855F7);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            min-width: 120px;
+            justify-content: center;
+        }
+
+        .home-button:hover {
+            background: linear-gradient(135deg, #7C3AED, #9333EA);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        .home-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
+        }
+
+        .home-button i {
+            font-size: 16px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .home-button {
+                top: 15px;
+                left: 15px;
+                padding: 10px 16px;
+                font-size: 13px;
+                min-width: 100px;
+            }
+            
+            .home-button i {
+                font-size: 14px;
+            }
+        }
+
+        /* Alternative compact version */
+        .home-button.compact {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            padding: 0;
+            min-width: auto;
+        }
+
+        .home-button.compact .button-text {
+            display: none;
+        }
+
+        .home-button.compact i {
+            font-size: 18px;
+        }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    a{color:var(--pri);text-decoration:none} a:hover{text-decoration:underline}
+    
+    .container{
+      display: flex;
+      min-height: 100vh;
+    }
+    
+    /* Sidebar Navigation */
+    .sidebar{
+      width: 280px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+    
+    /* Doctor Profile Section */
+    .doctor-profile{
+      padding: 24px;
+      text-align: center;
+      border-bottom: 1px solid #e5e7eb;
+      background: linear-gradient(135deg,#6d5bd0,#8b5cf6);
+      color: white;
+    }
+    
+    .doctor-avatar{
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      border: 3px solid rgba(255,255,255,0.3);
+      object-fit: cover;
+    }
+    
+    .doctor-name{
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 4px;
+    }
+    
+    .doctor-title{
+      font-size: 14px;
+      opacity: 0.9;
+      margin: 0;
+    }
+    
+    /* Navigation Menu */
+    .nav-menu{
+      padding: 20px;
+    }
+    
+    .nav-menu .kicker{
+      display:inline-block;
+      background:#efeafd;
+      color:#4533b7;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+      margin-bottom: 16px;
+    }
+    
+    .nav-menu a{
+      display:block;
+      padding:12px 16px;
+      border-radius:12px;
+      color:#374151;
+      border:1px solid #eceef4;
+      margin-bottom:8px;
+      background:#fff;
+      transition: all 0.2s ease;
+    }
+    
+    .nav-menu a:hover{
+      background:#f8fafc;
+      border-color: var(--pri);
+      color: var(--pri);
+      text-decoration: none;
+    }
+    
+    /* Main Content */
+    .main-content{
+      margin-left: 280px;
+      flex: 1;
+      padding: 24px;
+      max-width: calc(100% - 280px);
+    }
+    
+    .wrap{
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    header{
+      background: linear-gradient(135deg,#6d5bd0,#8b5cf6);
+      color:#fff;border-radius:24px;padding:36px 28px;margin:0 0 28px; position:relative; overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    header h1{margin:0 0 6px;font-size:clamp(24px,4vw,40px);font-weight:800;letter-spacing:.2px}
+    header p{margin:0;opacity:.95}
+    .grid{display:grid;gap:18px}
+    @media (min-width: 900px){ .grid-2{grid-template-columns: 1fr 1fr} .grid-3{grid-template-columns: repeat(3,1fr)} }
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+    .kicker{display:inline-block;background:#efeafd;color:#4533b7;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase}
+    h2{margin:.3rem 0 1rem;font-size:clamp(20px,3vw,28px)}
+    h3{margin:1rem 0 .5rem}
+    ul{margin:.35rem 0 .75rem 1.1rem}
+    .callout{border-left:6px solid var(--pri); background:#faf9ff; padding:14px 16px; border-radius:12px}
+    .badge{display:inline-flex;align-items:center;gap:6px;background:#eef2ff;color:#3730a3;padding:6px 10px;border-radius:10px;font-weight:600;font-size:13px}
+    .table-wrap{overflow:auto;border-radius:14px;border:1px solid #e5e7eb}
+    table{border-collapse:collapse;min-width:720px;background:#fff}
+    th,td{padding:14px 12px;border-bottom:1px solid #eef0f4;vertical-align:top}
+    th{background:#f5f7ff;text-align:left;font-weight:700;color:#374151}
+    tr:hover td{background:#fafafa}
+    .good{color:var(--good);font-weight:700}
+    .warn{color:var(--warn);font-weight:700}
+    .pill{display:inline-block;background:#f3f4f6;border:1px solid #e5e7eb;padding:2px 10px;border-radius:999px;font-size:12px}
+    details{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:14px 16px}
+    summary{cursor:pointer;font-weight:700;list-style:none} summary::-webkit-details-marker{display:none}
+    .footer{color:var(--muted);font-size:14px;text-align:center;margin:28px 0}
+    .chip{font-weight:700;color:#111827}
+    .ring{outline:3px solid var(--ring)}
+    
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      
+      .main-content {
+        margin-left: 0;
+        max-width: 100%;
+      }
+      
+      .mobile-nav-toggle {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1001;
+        background: var(--pri);
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+    }
+    
+    .mobile-nav-toggle {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+            <a href="mainpagepcos.html">
+  <button class="home-button" id="homeButton">
+        <i class="fas fa-home"></i>
+        <span class="button-text">Home</span>
+    </button>
+</a>
+  <div class="container">
+    <!-- Mobile Navigation Toggle -->
+    <button class="mobile-nav-toggle" onclick="toggleSidebar()">☰</button>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Doctor Profile -->
+      <div class="doctor-profile">
+        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face" alt="Dr. Priya Sharma" class="doctor-avatar">
+        <h3 class="doctor-name">Dr. Priya Sharma</h3>
+        <p class="doctor-title">Gynecologist & Women's Health Specialist</p>
+      </div>
+      
+      <!-- Navigation Menu -->
+      <div class="nav-menu">
+        <div class="kicker">Quick Nav</div>
+        <nav>
+          <a href="#what">What are PCOD & PCOS?</a>
+          <a href="#symptoms">Key Symptoms</a>
+          <a href="#compare">PCOD vs PCOS (Table)</a>
+          <a href="#doctor">When to Visit a Doctor</a>
+          <a href="#treatment">Treatment Options</a>
+          <a href="#faq">FAQs</a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="wrap">
+        <header>
+          <h1>PCOD vs PCOS — Understand the Difference</h1>
+          <p>Your friendly, no-jargon guide to symptoms, when to seek care, and treatment options.</p>
+        </header>
+
+        <div class="grid">
+          <!-- What -->
+          <section id="what" class="card ring">
+            <span class="kicker">Start Here</span>
+            <h2>What are PCOD & PCOS?</h2>
+            <div class="grid grid-2">
+              <div>
+                <h3 class="badge">PCOD (Polycystic Ovarian Disease)</h3>
+                <p>Ovaries produce immature or partially mature eggs that can form small cysts over time. Leads to hormonal imbalance but is usually <span class="good">milder</span> and often responds well to lifestyle changes.</p>
+                <div class="callout"><b>Common signs:</b> irregular cycles, weight gain, acne/oily skin, hair thinning, fatigue.</div>
+              </div>
+              <div>
+                <h3 class="badge">PCOS (Polycystic Ovary Syndrome)</h3>
+                <p>A broader hormonal & metabolic disorder with higher androgens. Affects multiple systems and can have significant long-term impacts. Often needs <span class="warn">medical treatment</span> in addition to lifestyle changes.</p>
+                <div class="callout"><b>Common signs:</b> severe cycle issues, hirsutism, persistent acne, weight challenges, infertility, higher risk of diabetes/heart disease.</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Symptoms section -->
+          <section id="symptoms" class="card">
+            <span class="kicker">Know the Signs</span>
+            <h2>Symptoms: Overlap & Differences</h2>
+            <p>Both can share symptoms (e.g., irregular periods, acne). However, PCOS tends to be <b>more severe</b> and is more strongly linked with metabolic problems like insulin resistance.</p>
+            <div class="grid grid-3">
+              <div class="card" style="padding:16px">
+                <h3>Shared</h3>
+                <ul>
+                  <li>Irregular or delayed periods</li>
+                  <li>Acne, oily skin</li>
+                  <li>Weight gain</li>
+                  <li>Mood changes</li>
+                </ul>
+              </div>
+              <div class="card" style="padding:16px">
+                <h3>More PCOD-typical</h3>
+                <ul>
+                  <li>Milder hormonal imbalance</li>
+                  <li>Symptoms often improve with lifestyle</li>
+                  <li>Fertility usually preserved</li>
+                </ul>
+              </div>
+              <div class="card" style="padding:16px">
+                <h3>More PCOS-typical</h3>
+                <ul>
+                  <li>Marked hirsutism/persistent acne</li>
+                  <li>Infertility risk, anovulation</li>
+                  <li>Insulin resistance & metabolic syndrome</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Comparison table -->
+          <section id="compare" class="card">
+            <span class="kicker">Deep Dive</span>
+            <h2>PCOD vs PCOS — Detailed Comparison</h2>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Aspect</th>
+                    <th>PCOD</th>
+                    <th>PCOS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Description</td>
+                    <td>Immature/partially mature eggs → small cysts.</td>
+                    <td>Endocrine & metabolic syndrome with multiple ovarian cysts.</td>
+                  </tr>
+                  <tr>
+                    <td>Prevalence</td>
+                    <td>Common (~10%).</td>
+                    <td>Less common (~0.2–2.5%).</td>
+                  </tr>
+                  <tr>
+                    <td>Hormonal imbalance</td>
+                    <td>Mild; mainly estrogen/progesterone shifts.</td>
+                    <td>Significant; elevated androgens.</td>
+                  </tr>
+                  <tr>
+                    <td>Menstrual cycle</td>
+                    <td>Irregular or slightly delayed.</td>
+                    <td>Highly irregular or absent (amenorrhea).</td>
+                  </tr>
+                  <tr>
+                    <td>Fertility impact</td>
+                    <td>Rarely causes infertility.</td>
+                    <td>Frequently linked to infertility.</td>
+                  </tr>
+                  <tr>
+                    <td>Weight & metabolism</td>
+                    <td>Weight gain manageable with lifestyle.</td>
+                    <td>Weight gain + insulin resistance; metabolic syndrome.</td>
+                  </tr>
+                  <tr>
+                    <td>Complications</td>
+                    <td>Minimal if well managed.</td>
+                    <td>↑ Risk: diabetes, hypertension, CVD, endometrial cancer.</td>
+                  </tr>
+                  <tr>
+                    <td>Skin & hair</td>
+                    <td>Oily skin, mild acne, occasional thinning.</td>
+                    <td>Severe acne, hirsutism, significant thinning/balding.</td>
+                  </tr>
+                  <tr>
+                    <td>Emotional impact</td>
+                    <td>Mild mood swings/stress.</td>
+                    <td>Higher anxiety/depression burden.</td>
+                  </tr>
+                  <tr>
+                    <td>Treatment</td>
+                    <td>Lifestyle: diet, exercise, stress control.</td>
+                    <td>Lifestyle + medical (hormonal therapy, insulin management).</td>
+                  </tr>
+                  <tr>
+                    <td>Reversibility</td>
+                    <td>Often reversible with lifestyle.</td>
+                    <td>Manageable; may need long-term care.</td>
+                  </tr>
+                  <tr>
+                    <td>Severity</td>
+                    <td class="good">Generally milder</td>
+                    <td class="warn">More severe/systemic</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- When to see a doctor -->
+          <section id="doctor" class="card">
+            <span class="kicker">Get Timely Care</span>
+            <h2>When to Visit a Doctor</h2>
+            <ul>
+              <li>Frequent missed/irregular periods</li>
+              <li>Rapid or unexplained weight gain</li>
+              <li>Severe acne, excess facial/body hair</li>
+              <li>Pelvic pain or prolonged/heavy bleeding</li>
+              <li>Difficulty conceiving</li>
+              <li>Signs of insulin resistance (e.g., dark velvety skin patches)</li>
+            </ul>
+            <p class="callout">Tip: Keep a simple period/weight/mood tracker for a month—bringing notes helps clinicians tailor care.</p>
+          </section>
+
+          <!-- Treatment -->
+          <section id="treatment" class="card">
+            <span class="kicker">Care Pathways</span>
+            <h2>Treatment Options</h2>
+            <div class="grid grid-2">
+              <div>
+                <h3>PCOD</h3>
+                <ul>
+                  <li>Balanced diet; reduce refined sugar</li>
+                  <li>Regular exercise & weight management</li>
+                  <li>Stress reduction (yoga, meditation)</li>
+                  <li>Cycle-regulating meds as needed</li>
+                </ul>
+              </div>
+              <div>
+                <h3>PCOS</h3>
+                <ul>
+                  <li>Lifestyle measures as above</li>
+                  <li>Hormonal therapy to manage androgens</li>
+                  <li>Address insulin resistance (as advised)</li>
+                  <li>Fertility support where required</li>
+                </ul>
+              </div>
+            </div>
+            <p class="pill">Remember: plans are individualized—always follow your clinician's advice.</p>
+          </section>
+
+          <!-- FAQs -->
+          <section id="faq" class="grid">
+            <div class="card"><h2>FAQs</h2></div>
+
+            <details open class="card">
+              <summary>1) What's the core difference between PCOD and PCOS?</summary>
+              <p><b>PCOD</b> is primarily an ovarian issue with milder hormonal changes; <b>PCOS</b> is a broader endocrine/metabolic syndrome with higher androgens and systemic effects.</p>
+            </details>
+            <details class="card">
+              <summary>2) Are the symptoms similar?</summary>
+              <p>Some overlap (irregular periods, acne), but PCOS symptoms are typically more severe and longer-lasting.</p>
+            </details>
+            <details class="card">
+              <summary>3) Can PCOD turn into PCOS?</summary>
+              <p>No—these are distinct conditions. Both benefit from early lifestyle management and medical guidance.</p>
+            </details>
+            <details class="card">
+              <summary>4) How is treatment different?</summary>
+              <p>PCOD often improves with lifestyle alone; PCOS usually needs combined lifestyle + medical therapy.</p>
+            </details>
+          </section>
+
+          <!-- Disclaimer -->
+          <section class="card">
+            <h3>Disclaimer</h3>
+            <p>This page is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider for concerns about your health.</p>
+          </section>
+        </div>
+
+        <p class="footer">💜 "Every woman deserves to feel healthy, confident, and cared for."</p>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Home Button JavaScript
+document.getElementById("homeButton").addEventListener("click", function () {
+  // Option 1: Go to root of current domain
+  window.location.href = "/";
+
+  // Option 2: Go to specific home page (uncomment and modify as needed)
+  // window.location.href = '/index.html';
+
+  // Option 3: Go to specific URL (uncomment and modify as needed)
+  // window.location.href = 'https://yourdomain.com';
+});
+
+// Optional: Add smooth scroll to top functionality
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
+
+// Optional: Show/hide button based on scroll position
+window.addEventListener("scroll", function () {
+  const homeButton = document.getElementById("homeButton");
+  if (window.scrollY > 100) {
+    homeButton.style.opacity = "0.9";
+  } else {
+    homeButton.style.opacity = "1";
+  }
+});
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+        // Close mobile menu after clicking a link
+        if (window.innerWidth <= 768) {
+          document.getElementById('sidebar').classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

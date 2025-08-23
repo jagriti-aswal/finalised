@@ -1,32 +1,3 @@
-// Home Button JavaScript
-document.getElementById("homeButton").addEventListener("click", function () {
-  // Option 1: Go to root of current domain
-  window.location.href = "/";
-
-  // Option 2: Go to specific home page (uncomment and modify as needed)
-  // window.location.href = '/index.html';
-
-  // Option 3: Go to specific URL (uncomment and modify as needed)
-  // window.location.href = 'https://yourdomain.com';
-});
-
-// Optional: Add smooth scroll to top functionality
-function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-}
-
-// Optional: Show/hide button based on scroll position
-window.addEventListener("scroll", function () {
-  const homeButton = document.getElementById("homeButton");
-  if (window.scrollY > 100) {
-    homeButton.style.opacity = "0.9";
-  } else {
-    homeButton.style.opacity = "1";
-  }
-});
 // Toggle guideline content
 function toggleGuideline(header) {
   const content = header.nextElementSibling;
@@ -64,20 +35,75 @@ function toggleGuideline(header) {
 // Show more guidelines
 function showMoreGuidelines(category) {
   const moreSection = document.getElementById(category + "-more");
-  const button = event.target;
+  const button = event.target.closest(".view-more-btn");
+  const buttonText = button.querySelector("span");
 
   if (moreSection.style.display === "none" || !moreSection.style.display) {
     moreSection.style.display = "block";
-    button.innerHTML =
-      '<i class="fas fa-minus"></i> Show Less ' +
-      (category === "safety" ? "Safety Guidelines" : "Health Policies");
+    if (currentLanguage === "hi") {
+      buttonText.setAttribute(
+        "data-hi",
+        category === "safety"
+          ? "कम सुरक्षा दिशानिर्देश दिखाएं"
+          : "कम स्वास्थ्य नीतियां दिखाएं"
+      );
+      buttonText.setAttribute(
+        "data-en",
+        category === "safety"
+          ? "Show Less Safety Guidelines"
+          : "Show Less Health Policies"
+      );
+    } else {
+      buttonText.setAttribute(
+        "data-en",
+        category === "safety"
+          ? "Show Less Safety Guidelines"
+          : "Show Less Health Policies"
+      );
+      buttonText.setAttribute(
+        "data-hi",
+        category === "safety"
+          ? "कम सुरक्षा दिशानिर्देश दिखाएं"
+          : "कम स्वास्थ्य नीतियां दिखाएं"
+      );
+    }
+    button.querySelector("i").className = "fas fa-minus";
   } else {
     moreSection.style.display = "none";
-    button.innerHTML =
-      '<i class="fas fa-plus"></i> View More ' +
-      (category === "safety" ? "Safety Guidelines" : "Health Policies");
+    if (currentLanguage === "hi") {
+      buttonText.setAttribute(
+        "data-hi",
+        category === "safety"
+          ? "अधिक सुरक्षा दिशानिर्देश देखें"
+          : "अधिक स्वास्थ्य नीतियां देखें"
+      );
+      buttonText.setAttribute(
+        "data-en",
+        category === "safety"
+          ? "View More Safety Guidelines"
+          : "View More Health Policies"
+      );
+    } else {
+      buttonText.setAttribute(
+        "data-en",
+        category === "safety"
+          ? "View More Safety Guidelines"
+          : "View More Health Policies"
+      );
+      buttonText.setAttribute(
+        "data-hi",
+        category === "safety"
+          ? "अधिक सुरक्षा दिशानिर्देश देखें"
+          : "अधिक स्वास्थ्य नीतियां देखें"
+      );
+    }
+    button.querySelector("i").className = "fas fa-plus";
   }
+
+  // Apply current language to the updated text
+  toggleLanguage();
 }
+
 async function fetchHospitals(location) {
   const apiKey = "de775fdfbff3403c8e75c745e980e9d8";
   const geocodeUrl = `https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(
@@ -162,60 +188,6 @@ function displayHospitals(hospitals, location) {
   //   hospitalsHTML += `</div></div>`;
   resultsContainer.innerHTML = hospitalsHTML;
 }
-
-// Display hospitals in the results container
-// function displayHospitals(hospitals, location) {
-//   const resultsContainer = document.getElementById("hospitalsResults");
-
-//   let hospitalsHTML = `
-//         <div class="search-results">
-//             <h3>Hospitals found in ${location}</h3>
-//             <div class="hospitals-grid">
-//     `;
-
-//   hospitals.forEach((hospital) => {
-//     hospitalsHTML += `
-//             <div class="hospital-card" data-type="${hospital.type}">
-//                 <div class="hospital-icon">
-//                     <i class="fas fa-hospital"></i>
-//                 </div>
-//                 <h4>${hospital.name}</h4>
-//                 <p class="hospital-location">${location}</p>
-//                 <div class="hospital-specialties">
-//                     ${hospital.specialties
-//                       .map(
-//                         (specialty) =>
-//                           `<span class="specialty-tag">${specialty}</span>`
-//                       )
-//                       .join("")}
-//                 </div>
-//                 <div class="hospital-contact">
-//                     <i class="fas fa-phone"></i>
-//                     <span>${hospital.phone}</span>
-//                 </div>
-//                 <div class="hospital-actions">
-//                     <button class="action-btn" onclick="getDirections('${
-//                       hospital.name
-//                     }', '${location}')">
-//                         <i class="fas fa-directions"></i>
-//                         Get Directions
-//                     </button>
-//                 </div>
-//             </div>
-//         `;
-//   });
-
-//   hospitalsHTML += `
-//             </div>
-//             <div class="search-note">
-//                 <p><i class="fas fa-info-circle"></i>
-//                 For actual hospital information and real-time availability, please contact the hospitals directly or use official healthcare directories.</p>
-//             </div>
-//         </div>
-//     `;
-
-//   resultsContainer.innerHTML = hospitalsHTML;
-// }
 
 // Get directions to hospital
 function getDirections(hospitalName, location) {
@@ -426,3 +398,56 @@ document.addEventListener("DOMContentLoaded", () => {
     card.setAttribute("aria-label", `${title}: ${number}`);
   });
 });
+
+// Language toggle functionality
+let currentLanguage = "en";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const languageToggle = document.getElementById("languageToggle");
+  const currentLangSpan = document.getElementById("currentLang");
+
+  if (languageToggle) {
+    languageToggle.addEventListener("click", () => {
+      currentLanguage = currentLanguage === "en" ? "hi" : "en";
+      toggleLanguage();
+      currentLangSpan.textContent =
+        currentLanguage === "en" ? "हिंदी" : "English";
+    });
+  }
+
+  // Set initial language
+  toggleLanguage();
+});
+
+function toggleLanguage() {
+  const elements = document.querySelectorAll("[data-en][data-hi]");
+  const placeholderElements = document.querySelectorAll(
+    "[data-placeholder-en][data-placeholder-hi]"
+  );
+
+  elements.forEach((element) => {
+    const englishText = element.getAttribute("data-en");
+    const hindiText = element.getAttribute("data-hi");
+
+    if (currentLanguage === "hi") {
+      element.textContent = hindiText;
+    } else {
+      element.textContent = englishText;
+    }
+  });
+
+  // Handle placeholder text for input fields
+  placeholderElements.forEach((element) => {
+    const englishPlaceholder = element.getAttribute("data-placeholder-en");
+    const hindiPlaceholder = element.getAttribute("data-placeholder-hi");
+
+    if (currentLanguage === "hi") {
+      element.placeholder = hindiPlaceholder;
+    } else {
+      element.placeholder = englishPlaceholder;
+    }
+  });
+
+  // Update document language attribute
+  document.documentElement.lang = currentLanguage;
+}

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety and Utility - Women's Safety Hub</title>
+    <link rel="stylesheet" href="safetyCSS.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <!-- Added language toggle button -->
+            <div class="language-toggle">
+                <button id="languageToggle" class="language-btn">
+                    <i class="fas fa-language"></i>
+                    <span id="currentLang">हिंदी</span>
+                </button>
+            </div>
+            
+            <h1 class="header-title">
+                <i class="fas fa-shield-alt"></i>
+                <span data-en="Safety and Utility" data-hi="सुरक्षा और उपयोगिता">Safety and Utility</span>
+            </h1>
+            <p class="header-subtitle" data-en="Your comprehensive guide to women's safety, health, and empowerment" data-hi="महिलाओं की सुरक्षा, स्वास्थ्य और सशक्तिकरण के लिए आपका व्यापक गाइड">Your comprehensive guide to women's safety, health, and empowerment</p>
+        </div>
+    </header>
+
+    <!-- Emergency Contacts Section -->
+    <section class="section emergency-section" id="emergency">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-phone-alt"></i>
+                <span data-en="Emergency Contacts" data-hi="आपातकालीन संपर्क">Emergency Contacts</span>
+            </h2>
+            <p class="section-subtitle" data-en="24/7 helplines for immediate assistance" data-hi="तत्काल सहायता के लिए 24/7 हेल्पलाइन">24/7 helplines for immediate assistance</p>
+            
+            <div class="contacts-grid">
+                <div class="contact-card urgent">
+                    <div class="contact-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 data-en="National Emergency" data-hi="राष्ट्रीय आपातकाल">National Emergency</h3>
+                    <div class="contact-number">112</div>
+                    <p data-en="All emergency services" data-hi="सभी आपातकालीन सेवाएं">All emergency services</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3 data-en="Women Helpline" data-hi="महिला हेल्पलाइन">Women Helpline</h3>
+                    <div class="contact-number">1091</div>
+                    <p data-en="24x7 women in distress" data-hi="24x7 संकट में महिलाएं">24x7 women in distress</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 data-en="One Stop Centre" data-hi="वन स्टॉप सेंटर">One Stop Centre</h3>
+                    <div class="contact-number">181</div>
+                    <p data-en="Women helpline scheme" data-hi="महिला हेल्पलाइन योजना">Women helpline scheme</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3 data-en="Child Helpline" data-hi="बाल हेल्पलाइन">Child Helpline</h3>
+                    <div class="contact-number">1098</div>
+                    <p data-en="Child protection services" data-hi="बाल संरक्षण सेवाएं">Child protection services</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 data-en="Domestic Violence" data-hi="घरेलू हिंसा">Domestic Violence</h3>
+                    <div class="contact-number">1091</div>
+                    <p data-en="Domestic abuse support" data-hi="घरेलू दुर्व्यवहार सहायता">Domestic abuse support</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 data-en="Mental Health" data-hi="मानसिक स्वास्थ्य">Mental Health</h3>
+                    <div class="contact-number">9152987821</div>
+                    <p data-en="COOJ mental health helpline" data-hi="COOJ मानसिक स्वास्थ्य हेल्पलाइन">COOJ mental health helpline</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 data-en="Legal Aid" data-hi="कानूनी सहायता">Legal Aid</h3>
+                    <div class="contact-number">15100</div>
+                    <p data-en="Free legal aid helpline" data-hi="निःशुल्क कानूनी सहायता हेल्पलाइन">Free legal aid helpline</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3 data-en="Health Helpline" data-hi="स्वास्थ्य हेल्पलाइन">Health Helpline</h3>
+                    <div class="contact-number">104</div>
+                    <p data-en="National health helpline" data-hi="राष्ट्रीय स्वास्थ्य हेल्पलाइन">National health helpline</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-eye-slash"></i>
+                    </div>
+                    <h3 data-en="Cyber Crime" data-hi="साइबर अपराध">Cyber Crime</h3>
+                    <div class="contact-number">1930</div>
+                    <p data-en="Cyber crime helpline" data-hi="साइबर अपराध हेल्पलाइन">Cyber crime helpline</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 data-en="Student Helpline" data-hi="छात्र हेल्पलाइन">Student Helpline</h3>
+                    <div class="contact-number">8448440632</div>
+                    <p data-en="UGC student grievance" data-hi="UGC छात्र शिकायत">UGC student grievance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NGOs Section -->
+    <section class="section ngos-section" id="ngos">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-heart"></i>
+                <span data-en="Supporting NGOs" data-hi="सहायक एनजीओ">Supporting NGOs</span>
+            </h2>
+            <p class="section-subtitle" data-en="Organizations working for women's safety and empowerment" data-hi="महिलाओं की सुरक्षा और सशक्तिकरण के लिए काम करने वाले संगठन">Organizations working for women's safety and empowerment</p>
+            
+            <div class="ngos-grid">
+                <div class="ngo-card">
+                    <div class="ngo-image">
+                        <img src="https://images.yourstory.com/cs/5/803961002d6d11e9aa979329348d4c3e/Breakthrough3-1598968070322.png" alt="Breakthrough India">
+                    </div>
+                    <div class="ngo-content">
+                        <h3>Breakthrough India</h3>
+                        <p data-en="Working to end violence against women and girls through innovative campaigns and community programs." data-hi="नवाचार अभियानों और सामुदायिक कार्यक्रमों के माध्यम से महिलाओं और लड़कियों के खिलाफ हिंसा को समाप्त करने के लिए काम कर रहा है।">Working to end violence against women and girls through innovative campaigns and community programs.</p>
+                        <div class="ngo-focus">
+                            <span class="focus-tag" data-en="Violence Prevention" data-hi="हिंसा रोकथाम">Violence Prevention</span>
+                            <span class="focus-tag" data-en="Awareness" data-hi="जागरूकता">Awareness</span>
+                        </div>
+                        <a href="https://breakthrough.tv/" target="_blank" class="ngo-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span data-en="Visit Website" data-hi="वेबसाइट पर जाएं">Visit Website</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ngo-card">
+                    <div class="ngo-image">
+                        <img src="https://i1.wp.com/www.ip-watch.org/weblog/wp-content/uploads/2016/07/lawyers-collective.png" alt="Lawyers Collective">
+                    </div>
+                    <div class="ngo-content">
+                        <h3>Lawyers Collective</h3>
+                        <p data-en="Providing legal aid and advocacy for women's rights, focusing on gender justice and equality." data-hi="महिलाओं के अधिकारों के लिए कानूनी सहायता और वकालत प्रदान करना, लैंगिक न्याय और समानता पर ध्यान देना।">Providing legal aid and advocacy for women's rights, focusing on gender justice and equality.</p>
+                        <div class="ngo-focus">
+                            <span class="focus-tag" data-en="Legal Aid" data-hi="कानूनी सहायता">Legal Aid</span>
+                            <span class="focus-tag" data-en="Rights" data-hi="अधिकार">Rights</span>
+                        </div>
+                        <a href="https://lawyerscollective.org/" target="_blank" class="ngo-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span data-en="Visit Website" data-hi="वेबसाइट पर जाएं">Visit Website</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ngo-card">
+                    <div class="ngo-image">
+                        <img src="https://i1.wp.com/opportunitycell.com/wp-content/uploads/2021/05/SEWA-Logo.jpg?fit=634%2C489&ssl=1" alt="SEWA">
+                    </div>
+                    <div class="ngo-content">
+                        <h3>SEWA (Self Employed Women's Association)</h3>
+                        <p data-en="Empowering women through economic independence, healthcare, and social security programs." data-hi="आर्थिक स्वतंत्रता, स्वास्थ्य सेवा और सामाजिक सुरक्षा कार्यक्रमों के माध्यम से महिलाओं को सशक्त बनाना।">Empowering women through economic independence, healthcare, and social security programs.</p>
+                        <div class="ngo-focus">
+                            <span class="focus-tag" data-en="Economic Empowerment" data-hi="आर्थिक सशक्तिकरण">Economic Empowerment</span>
+                            <span class="focus-tag" data-en="Healthcare" data-hi="स्वास्थ्य सेवा">Healthcare</span>
+                        </div>
+                        <a href="https://www.sewa.org/" target="_blank" class="ngo-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span data-en="Visit Website" data-hi="वेबसाइट पर जाएं">Visit Website</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ngo-card">
+                    <div class="ngo-image">
+                        <img src="https://th.bing.com/th/id/OIP.7eJjxJDEcBjyVrOw09czgQAAAA?w=189&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Population Foundation">
+                    </div>
+                    <div class="ngo-content">
+                        <h3>Population Foundation of India</h3>
+                        <p data-en="Focusing on reproductive health, family planning, and women's health awareness programs." data-hi="प्रजनन स्वास्थ्य, परिवार नियोजन और महिलाओं के स्वास्थ्य जागरूकता कार्यक्रमों पर ध्यान देना।">Focusing on reproductive health, family planning, and women's health awareness programs.</p>
+                        <div class="ngo-focus">
+                            <span class="focus-tag" data-en="Health" data-hi="स्वास्थ्य">Health</span>
+                            <span class="focus-tag" data-en="Reproductive Rights" data-hi="प्रजनन अधिकार">Reproductive Rights</span>
+                        </div>
+                        <a href="https://populationfoundation.in/" target="_blank" class="ngo-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span data-en="Visit Website" data-hi="वेबसाइट पर जाएं">Visit Website</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ngo-card">
+                    <div class="ngo-image">
+                        <img src="https://th.bing.com/th/id/OIP.NrTl0JKcAB0rER7XviiHHwHaHa?w=167&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Akshaya Patra">
+                    </div>
+                    <div class="ngo-content">
+                        <h3>Apne Aap Women Worldwide</h3>
+                        <p data-en="Fighting sex trafficking and supporting women and girls in prostitution to find alternative livelihoods." data-hi="यौन तस्करी से लड़ना और वेश्यावृत्ति में महिलाओं और लड़कियों को वैकल्पिक आजीविका खोजने में सहायता करना।">Fighting sex trafficking and supporting women and girls in prostitution to find alternative livelihoods.</p>
+                        <div class="ngo-focus">
+                            <span class="focus-tag" data-en="Anti-Trafficking" data-hi="तस्करी विरोधी">Anti-Trafficking</span>
+                            <span class="focus-tag" data-en="Rehabilitation" data-hi="पुनर्वास">Rehabilitation</span>
+                        </div>
+                        <a href="https://apneaap.org/" target="_blank" class="ngo-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span data-en="Visit Website" data-hi="वेबसाइट पर जाएं">Visit Website</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ngo-card">
+                    <div class="ngo-image">
+                        <img src="https://th.bing.com/th/id/OIP.uMgOvGPzy6XvmP0ZNE-yBgAAAA?w=164&h=94&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Sneha">
+                    </div>
+                    <div class="ngo-content">
+                        <h3>SNEHA</h3>
+                        <p data-en="Providing crisis intervention, counseling, and support services for women facing violence and distress." data-hi="हिंसा और संकट का सामना करने वाली महिलाओं के लिए संकट हस्तक्षेप, परामर्श और सहायता सेवाएं प्रदान करना।">Providing crisis intervention, counseling, and support services for women facing violence and distress.</p>
+                        <div class="ngo-focus">
+                            <span class="focus-tag" data-en="Crisis Support" data-hi="संकट सहायता">Crisis Support</span>
+                            <span class="focus-tag" data-en="Counseling" data-hi="परामर्श">Counseling</span>
+                        </div>
+                        <a href="https://snehamumbai.org/" target="_blank" class="ngo-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span data-en="Visit Website" data-hi="वेबसाइट पर जाएं">Visit Website</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Government Guidelines Section -->
+    <section class="section guidelines-section" id="guidelines">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-gavel"></i>
+                <span data-en="Government Guidelines & Policies" data-hi="सरकारी दिशानिर्देश और नीतियां">Government Guidelines & Policies</span>
+            </h2>
+            <p class="section-subtitle" data-en="Know your rights and legal protections" data-hi="अपने अधिकारों और कानूनी सुरक्षा को जानें">Know your rights and legal protections</p>
+            
+            <div class="guidelines-categories">
+                <!-- Safety Guidelines -->
+                <div class="category-section">
+                    <h3 class="category-title">
+                        <i class="fas fa-shield-alt"></i>
+                        <span data-en="Women's Safety Laws" data-hi="महिला सुरक्षा कानून">Women's Safety Laws</span>
+                    </h3>
+                    <div class="guidelines-list">
+                        <div class="guideline-item">
+                            <div class="guideline-header" onclick="toggleGuideline(this)">
+                                <h4 data-en="Protection of Women from Domestic Violence Act, 2005" data-hi="घरेलू हिंसा से महिलाओं का संरक्षण अधिनियम, 2005">Protection of Women from Domestic Violence Act, 2005</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="guideline-content">
+                                <p data-en="This Act provides protection to women from domestic violence. It covers physical, sexual, verbal, emotional, and economic abuse. Women can file complaints and seek protection orders, residence orders, monetary relief, and custody orders." data-hi="यह अधिनियम महिलाओं को घरेलू हिंसा से सुरक्षा प्रदान करता है। इसमें शारीरिक, यौन, मौखिक, भावनात्मक और आर्थिक दुर्व्यवहार शामिल है। महिलाएं शिकायत दर्ज कर सकती हैं और सुरक्षा आदेश, निवास आदेश, मौद्रिक राहत और हिरासत आदेश मांग सकती हैं।">This Act provides protection to women from domestic violence. It covers physical, sexual, verbal, emotional, and economic abuse. Women can file complaints and seek protection orders, residence orders, monetary relief, and custody orders.</p>
+                                <ul>
+                                    <li data-en="Covers all forms of domestic violence" data-hi="घरेलू हिंसा के सभी रूपों को कवर करता है">Covers all forms of domestic violence</li>
+                                    <li data-en="Protection orders available" data-hi="सुरक्षा आदेश उपलब्ध">Protection orders available</li>
+                                    <li data-en="Monetary compensation provisions" data-hi="मौद्रिक मुआवजे के प्रावधान">Monetary compensation provisions</li>
+                                    <li data-en="Residence rights protection" data-hi="निवास अधिकार संरक्षण">Residence rights protection</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guideline-item">
+                            <div class="guideline-header" onclick="toggleGuideline(this)">
+                                <h4 data-en="Sexual Harassment at Workplace Act, 2013" data-hi="कार्यस्थल पर यौन उत्पीड़न अधिनियम, 2013">Sexual Harassment at Workplace Act, 2013</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="guideline-content">
+                                <p data-en="Mandatory formation of Internal Complaints Committee (ICC) in organizations with 10+ employees. Provides mechanism for complaint, inquiry, and redressal of sexual harassment at workplace." data-hi="10+ कर्मचारियों वाले संगठनों में आंतरिक शिकायत समिति (ICC) का अनिवार्य गठन। कार्यस्थल पर यौन उत्पीड़न की शिकायत, जांच और निवारण के लिए तंत्र प्रदान करता है।">Mandatory formation of Internal Complaints Committee (ICC) in organizations with 10+ employees. Provides mechanism for complaint, inquiry, and redressal of sexual harassment at workplace.</p>
+                                <ul>
+                                    <li data-en="ICC formation mandatory" data-hi="ICC गठन अनिवार्य">ICC formation mandatory</li>
+                                    <li data-en="Confidential complaint process" data-hi="गोपनीय शिकायत प्रक्रिया">Confidential complaint process</li>
+                                    <li data-en="Time-bound inquiry (90 days)" data-hi="समयबद्ध जांच (90 दिन)">Time-bound inquiry (90 days)</li>
+                                    <li data-en="Protection against retaliation" data-hi="प्रतिशोध से सुरक्षा">Protection against retaliation</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guideline-item">
+                            <div class="guideline-header" onclick="toggleGuideline(this)">
+                                <h4 data-en="Criminal Law Amendment Act, 2013" data-hi="आपराधिक कानून संशोधन अधिनियम, 2013">Criminal Law Amendment Act, 2013</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="guideline-content">
+                                <p data-en="Strengthened laws against sexual offenses including rape, acid attacks, stalking, and voyeurism. Enhanced punishment and faster trial procedures." data-hi="बलात्कार, एसिड अटैक, स्टॉकिंग और दृश्यरतिकता सहित यौन अपराधों के खिलाफ मजबूत कानून। बढ़ी हुई सजा और तेज़ ट्रायल प्रक्रियाएं।">Strengthened laws against sexual offenses including rape, acid attacks, stalking, and voyeurism. Enhanced punishment and faster trial procedures.</p>
+                                <ul>
+                                    <li data-en="Expanded definition of sexual offenses" data-hi="यौन अपराधों की विस्तृत परिभाषा">Expanded definition of sexual offenses</li>
+                                    <li data-en="Mandatory minimum sentences" data-hi="अनिवार्य न्यूनतम सजा">Mandatory minimum sentences</li>
+                                    <li data-en="Fast-track courts for speedy trials" data-hi="त्वरित ट्रायल के लिए फास्ट-ट्रैक कोर्ट">Fast-track courts for speedy trials</li>
+                                    <li data-en="Victim compensation provisions" data-hi="पीड़ित मुआवजे के प्रावधान">Victim compensation provisions</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guideline-item">
+                            <div class="guideline-header" onclick="toggleGuideline(this)">
+                                <h4 data-en="Dowry Prohibition Act, 1961" data-hi="दहेज निषेध अधिनियम, 1961">Dowry Prohibition Act, 1961</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="guideline-content">
+                                <p data-en="Prohibits giving, taking, or demanding dowry. Both giving and receiving dowry is punishable with imprisonment and fine." data-hi="दहेज देना, लेना या मांगना प्रतिबंधित है। दहेज देना और लेना दोनों कारावास और जुर्माने के साथ दंडनीय है।">Prohibits giving, taking, or demanding dowry. Both giving and receiving dowry is punishable with imprisonment and fine.</p>
+                                <ul>
+                                    <li data-en="Complete prohibition of dowry" data-hi="दहेज का पूर्ण निषेध">Complete prohibition of dowry</li>
+                                    <li data-en="Punishment for all parties involved" data-hi="शामिल सभी पक्षों के लिए सजा">Punishment for all parties involved</li>
+                                    <li data-en="Special courts for dowry cases" data-hi="दहेज मामलों के लिए विशेष अदालतें">Special courts for dowry cases</li>
+                                    <li data-en="Protection for complainants" data-hi="शिकायतकर्ताओं के लिए सुरक्षा">Protection for complainants</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guideline-item">
+                            <div class="guideline-header" onclick="toggleGuideline(this)">
+                                <h4 data-en="Immoral Traffic Prevention Act, 1956" data-hi="अनैतिक यातायात रोकथाम अधिनियम, 1956">Immoral Traffic Prevention Act, 1956</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="guideline-content">
+                                <p data-en="Prevents trafficking of women and girls for commercial sexual exploitation. Provides for rescue, rehabilitation, and reintegration of victims." data-hi="वाणिज्यिक यौन शोषण के लिए महिलाओं और लड़कियों की तस्करी को रोकता है। पीड़ितों के बचाव, पुनर्वास और पुनर्एकीकरण का प्रावधान करता है।">Prevents trafficking of women and girls for commercial sexual exploitation. Provides for rescue, rehabilitation, and reintegration of victims.</p>
+                                <ul>
+                                    <li data-en="Anti-trafficking provisions" data-hi="तस्करी विरोधी प्रावधान">Anti-trafficking provisions</li>
+                                    <li data-en="Victim protection and rehabilitation" data-hi="पीड़ित संरक्षण और पुनर्वास">Victim protection and rehabilitation</li>
+                                    <li data-en="Punishment for traffickers" data-hi="तस्करों के लिए सजा">Punishment for traffickers</li>
+                                    <li data-en="Special courts and procedures" data-hi="विशेष अदालतें और प्रक्रियाएं">Special courts and procedures</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="view-more-container">
+                            <button class="view-more-btn" onclick="showMoreGuidelines('safety')">
+                                <i class="fas fa-plus"></i>
+                                <span data-en="View More Safety Guidelines" data-hi="अधिक सुरक्षा दिशानिर्देश देखें">View More Safety Guidelines</span>
+                            </button>
+                        </div>
+
+                        <div class="hidden-guidelines" id="safety-more" style="display: none;">
+                            <div class="guideline-item">
+                                <div class="guideline-header" onclick="toggleGuideline(this)">
+                                    <h4 data-en="Indecent Representation of Women Act, 1986" data-hi="महिलाओं का अशोभनीय प्रतिनिधित्व अधिनियम, 1986">Indecent Representation of Women Act, 1986</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="guideline-content">
+                                    <p data-en="Prohibits indecent representation of women through advertisements, publications, writings, paintings, figures, or in any other manner." data-hi="विज्ञापनों, प्रकाशनों, लेखन, चित्रों, आंकड़ों या किसी अन्य तरीके से महिलाओं के अशोभनीय प्रतिनिधित्व को प्रतिबंधित करता है।">Prohibits indecent representation of women through advertisements, publications, writings, paintings, figures, or in any other manner.</p>
+                                </div>
+                            </div>
+
+                            <div class="guideline-item">
+                                <div class="guideline-header" onclick="toggleGuideline(this)">
+                                    <h4 data-en="Pre-Conception and Pre-Natal Diagnostic Techniques Act, 1994" data-hi="गर्भधारण पूर्व और प्रसव पूर्व निदान तकनीक अधिनियम, 1994">Pre-Conception and Pre-Natal Diagnostic Techniques Act, 1994</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="guideline-content">
+                                    <p data-en="Prohibits sex determination tests and female foeticide. Regulates genetic counseling centers and laboratories." data-hi="लिंग निर्धारण परीक्षण और कन्या भ्रूण हत्या को प्रतिबंधित करता है। आनुवंशिक परामर्श केंद्रों और प्रयोगशालाओं को नियंत्रित करता है।">Prohibits sex determination tests and female foeticide. Regulates genetic counseling centers and laboratories.</p>
+                                </div>
+                            </div>
+
+                            <div class="guideline-item">
+                                <div class="guideline-header" onclick="toggleGuideline(this)">
+                                    <h4 data-en="Commission of Sati Prevention Act, 1987" data-hi="सती निवारण अधिनियम, 1987">Commission of Sati Prevention Act, 1987</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="guideline-content">
+                                    <p data-en="Prohibits the practice of Sati and glorification of Sati. Provides for punishment of those who abet, glorify or attempt to commit Sati." data-hi="सती प्रथा और सती के महिमामंडन को प्रतिबंधित करता है। सती को प्रेरित करने, महिमामंडित करने या करने का प्रयास करने वालों की सजा का प्रावधान करता है।">Prohibits the practice of Sati and glorification of Sati. Provides for punishment of those who abet, glorify or attempt to commit Sati.</p>
+                                </div>
+                            </div>
+
+                            <div class="guideline-item">
+                                <div class="guideline-header" onclick="toggleGuideline(this)">
+                                    <h4 data-en="Child Marriage Restraint Act, 1929" data-hi="बाल विवाह निरोध अधिनियम, 1929">Child Marriage Restraint Act, 1929</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="guideline-content">
+                                    <p data-en="Prohibits child marriage and provides for punishment of those who perform, permit or promote child marriages." data-hi="बाल विवाह को प्रतिबंधित करता है और बाल विवाह करने, अनुमति देने या बढ़ावा देने वालों की सजा का प्रावधान करता है।">Prohibits child marriage and provides for punishment of those who perform, permit or promote child marriages.</p>
+                                </div>
+                            </div>
+
+                            <div class="guideline-item">
+                                <div class="guideline-header" onclick="toggleGuideline(this)">
+                                    <h4 data-en="Information Technology Act, 2000 (Cyber Crimes)" data-hi="सूचना प्रौद्योगिकी अधिनियम, 2000 (साइबर अपराध)">Information Technology Act, 2000 (Cyber Crimes)</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="guideline-content">
+                                    <p data-en="Addresses cyber crimes against women including cyber stalking, morphing, and online harassment. Provides legal framework for digital evidence." data-hi="साइबर स्टॉकिंग, मॉर्फिंग और ऑनलाइन उत्पीड़न सहित महिलाओं के खिलाफ साइबर अपराधों को संबोधित करता है। डिजिटल साक्ष्य के लिए कानूनी ढांचा प्रदान करता है।">Addresses cyber crimes against women including cyber stalking, morphing, and online harassment. Provides legal framework for digital evidence.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health Guidelines -->
+                <div class="category-section">
+                    <h3 class="category-title">
+                        <i class="fas fa-heartbeat"></i>
+                        <span data-en="Women's Health Policies" data-hi="महिला स्वास्थ्य नीतियां">Women's Health Policies</span>
+                    </h3>
+                    <div class="guidelines-list">
+                        <div class="guideline-item">
+                            <div class="guideline-header" onclick="toggleGuideline(this)">
+                                <h4 data-en="National Health Policy, 2017" data-hi="राष्ट्रीय स्वास्थ्य नीति, 2017">National Health Policy, 2017</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="guideline-content">
+                                <p data-en="Focuses on reproductive, maternal, newborn, child and adolescent health. Aims to reduce maternal mortality ratio to 100 per 100,000 live births by 2020." data-hi="प्रजनन, मातृ, नवजात, बाल और किशोर स्वास्थ्य पर केंद्रित है। 2020 तक मातृ मृत्यु दर को प्रति 100,000 जीवित जन्मों पर 100 तक कम करने का लक्ष्य है।">Focuses on reproductive, maternal, newborn, child and adolescent health. Aims to reduce maternal mortality ratio to 100 per 100,000 live births by 2020.</p>
+                                <ul>
+                                    <li data-en="Free healthcare services for women" data-hi="महिलाओं के लिए निःशुल्क स्वास्थ्य सेवाएं">Free healthcare services for women</li>
+                                    <li data-en="Maternal mortality reduction targets" data-hi="मातृ मृत्यु दर कमी लक्ष्य">Maternal mortality reduction targets</li>
+                                    <li data-en="Reproductive health focus" data-hi="प्रजनन स्वास्थ्य फोकस">Reproductive health focus</li>
+                                    <li data-en="Adolescent health programs" data-hi="किशोर स्वास्थ्य कार्यक्रम">Adolescent health programs</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guideline-item">
+                            <div class="guideline-header" onclick="toggleGuideline(this)">
+                                <h4 data-en="Janani Suraksha Yojana (JSY)" data-hi="जननी सुरक्षा योजना (JSY)">Janani Suraksha Yojana (JSY)</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="guideline-content">
+                                <p data-en="Safe motherhood intervention providing cash assistance to pregnant women for institutional delivery. Reduces maternal and neonatal mortality." data-hi="संस्थागत प्रसव के लिए गर्भवती महिलाओं को नकद सहायता प्रदान करने वाला सुरक्षित मातृत्व हस्तक्षेप। मातृ और नवजात मृत्यु दर को कम करता है।">Safe motherhood intervention providing cash assistance to pregnant women for institutional delivery. Reduces maternal and neonatal mortality.</p>
+                                <ul>
+                                    <li data-en="Cash incentives for institutional delivery" data-hi="संस्थागत प्रसव के लिए नकद प्रोत्साहन">Cash incentives for institutional delivery</li>
+                                    <li data-en="Free delivery services" data-hi="निःशुल्क प्रसव सेवाएं">Free delivery services</li>
+                                    <li data-en="Post-delivery care" data-hi="प्रसव के बाद की देखभाल">Post-delivery care</li>
+                                    <li data-en="ASHA worker support" data-hi="आशा कार्यकर्ता सहायता">ASHA worker support</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guideline-item">
+                            <div class="guideline-header" onclick="toggleGuideline(this)">
+                                <h4 data-en="Pradhan Mantri Matru Vandana Yojana (PMMVY)" data-hi="प्रधान मंत्री मातृ वंदना योजना (PMMVY)">Pradhan Mantri Matru Vandana Yojana (PMMVY)</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="guideline-content">
+                                <p data-en="Maternity benefit program providing ₹5,000 cash incentive to pregnant and lactating mothers for first living child." data-hi="पहले जीवित बच्चे के लिए गर्भवती और स्तनपान कराने वाली माताओं को ₹5,000 नकद प्रोत्साहन प्रदान करने वाला मातृत्व लाभ कार्यक्रम।">Maternity benefit program providing ₹5,000 cash incentive to pregnant and lactating mothers for first living child.</p>
+                                <ul>
+                                    <li data-en="₹5,000 cash benefit" data-hi="₹5,000 नकद लाभ">₹5,000 cash benefit</li>
+                                    <li data-en="Nutrition support during pregnancy" data-hi="गर्भावस्था के दौरान पोषण सहायता">Nutrition support during pregnancy</li>
+                                    <li data-en="Wage compensation" data-hi="मजदूरी मुआवजा">Wage compensation</li>
+                                    <li data-en="Health and nutrition education" data-hi="स्वास्थ्य और पोषण शिक्षा">Health and nutrition education</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guideline-item">
+                            <div class="guideline-header" onclick="toggleGuideline(this)">
+                                <h4 data-en="Mission Indradhanush" data-hi="मिशन इंद्रधनुष">Mission Indradhanush</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="guideline-content">
+                                <p data-en="Immunization program targeting pregnant women and children. Focuses on full immunization coverage in high-priority districts." data-hi="गर्भवती महिलाओं और बच्चों को लक्षित करने वाला टीकाकरण कार्यक्रम। उच्च प्राथमिकता वाले जिलों में पूर्ण टीकाकरण कवरेज पर केंद्रित है।">Immunization program targeting pregnant women and children. Focuses on full immunization coverage in high-priority districts.</p>
+                                <ul>
+                                    <li data-en="Tetanus vaccination for pregnant women" data-hi="गर्भवती महिलाओं के लिए टिटनेस टीकाकरण">Tetanus vaccination for pregnant women</li>
+                                    <li data-en="Child immunization coverage" data-hi="बाल टीकाकरण कवरेज">Child immunization coverage</li>
+                                    <li data-en="Focus on high-priority areas" data-hi="उच्च प्राथमिकता वाले क्षेत्रों पर फोकस">Focus on high-priority areas</li>
+                                    <li data-en="Mobile immunization units" data-hi="मोबाइल टीकाकरण इकाइयां">Mobile immunization units</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="guideline-item">
+                            <div class="guideline-header" onclick="toggleGuideline(this)">
+                                <h4 data-en="Rashtriya Kishor Swasthya Karyakram (RKSK)" data-hi="राष्ट्रीय किशोर स्वास्थ्य कार्यक्रम (RKSK)">Rashtriya Kishor Swasthya Karyakram (RKSK)</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="guideline-content">
+                                <p data-en="Adolescent health program addressing nutritional needs, mental health, and reproductive health of adolescents aged 10-19 years." data-hi="10-19 वर्ष की आयु के किशोरों की पोषण संबंधी आवश्यकताओं, मानसिक स्वास्थ्य और प्रजनन स्वास्थ्य को संबोधित करने वाला किशोर स्वास्थ्य कार्यक्रम।">Adolescent health program addressing nutritional needs, mental health, and reproductive health of adolescents aged 10-19 years.</p>
+                                <ul>
+                                    <li data-en="Adolescent-friendly health services" data-hi="किशोर-अनुकूल स्वास्थ्य सेवाएं">Adolescent-friendly health services</li>
+                                    <li data-en="Menstrual hygiene management" data-hi="मासिक धर्म स्वच्छता प्रबंधन">Menstrual hygiene management</li>
+                                    <li data-en="Nutrition and anemia prevention" data-hi="पोषण और एनीमिया रोकथाम">Nutrition and anemia prevention</li>
+                                    <li data-en="Mental health support" data-hi="मानसिक स्वास्थ्य सहायता">Mental health support</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="view-more-container">
+                            <button class="view-more-btn" onclick="showMoreGuidelines('health')">
+                                <i class="fas fa-plus"></i>
+                                <span data-en="View More Health Policies" data-hi="अधिक स्वास्थ्य नीतियां देखें">View More Health Policies</span>
+                            </button>
+                        </div>
+
+                        <div class="hidden-guidelines" id="health-more" style="display: none;">
+                            <div class="guideline-item">
+                                <div class="guideline-header" onclick="toggleGuideline(this)">
+                                    <h4 data-en="National Family Planning Program" data-hi="राष्ट्रीय परिवार नियोजन कार्यक्रम">National Family Planning Program</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="guideline-content">
+                                    <p data-en="Provides access to contraceptive services, family planning counseling, and reproductive health services." data-hi="गर्भनिरोधक सेवाओं, परिवार नियोजन परामर्श और प्रजनन स्वास्थ्य सेवाओं तक पहुंच प्रदान करता है।">Provides access to contraceptive services, family planning counseling, and reproductive health services.</p>
+                                </div>
+                            </div>
+
+                            <div class="guideline-item">
+                                <div class="guideline-header" onclick="toggleGuideline(this)">
+                                    <h4 data-en="LaQshya - Labour Room Quality Improvement Initiative" data-hi="लक्ष्य - प्रसव कक्ष गुणवत्ता सुधार पहल">LaQshya - Labour Room Quality Improvement Initiative</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="guideline-content">
+                                    <p data-en="Improves quality of care in labour rooms and maternity operation theatres to reduce maternal and newborn mortality." data-hi="मातृ और नवजात मृत्यु दर को कम करने के लिए प्रसव कक्षों और मातृत्व ऑपरेशन थिएटरों में देखभाल की गुणवत्ता में सुधार करता है।">Improves quality of care in labour rooms and maternity operation theatres to reduce maternal and newborn mortality.</p>
+                                </div>
+                            </div>
+
+                            <div class="guideline-item">
+                                <div class="guideline-header" onclick="toggleGuideline(this)">
+                                    <h4 data-en="Surakshit Matritva Aashwasan (SUMAN)" data-hi="सुरक्षित मातृत्व आश्वासन (सुमन)">Surakshit Matritva Aashwasan (SUMAN)</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="guideline-content">
+                                    <p data-en="Assures dignified, respectful and quality healthcare at no cost and zero tolerance for denial of services." data-hi="बिना किसी लागत के सम्मानजनक, सम्मानपूर्ण और गुणवत्तापूर्ण स्वास्थ्य सेवा का आश्वासन देता है और सेवाओं से इनकार के लिए शून्य सहनशीलता।">Assures dignified, respectful and quality healthcare at no cost and zero tolerance for denial of services.</p>
+                                </div>
+                            </div>
+
+                            <div class="guideline-item">
+                                <div class="guideline-header" onclick="toggleGuideline(this)">
+                                    <h4 data-en="Ayushman Bharat - Health and Wellness Centres" data-hi="आयुष्मान भारत - स्वास्थ्य और कल्याण केंद्र">Ayushman Bharat - Health and Wellness Centres</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="guideline-content">
+                                    <p data-en="Provides comprehensive primary healthcare including reproductive and child health services closer to communities." data-hi="समुदायों के करीब प्रजनन और बाल स्वास्थ्य सेवाओं सहित व्यापक प्राथमिक स्वास्थ्य सेवा प्रदान करता है।">Provides comprehensive primary healthcare including reproductive and child health services closer to communities.</p>
+                                </div>
+                            </div>
+
+                            <div class="guideline-item">
+                                <div class="guideline-header" onclick="toggleGuideline(this)">
+                                    <h4 data-en="National Iron Plus Initiative" data-hi="राष्ट्रीय आयरन प्लस पहल">National Iron Plus Initiative</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="guideline-content">
+                                    <p data-en="Addresses iron deficiency anemia among children, adolescents, and women of reproductive age through supplementation." data-hi="पूरकता के माध्यम से बच्चों, किशोरों और प्रजनन आयु की महिलाओं में आयरन की कमी से होने वाले एनीमिया को संबोधित करता है।">Addresses iron deficiency anemia among children, adolescents, and women of reproductive age through supplementation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nearby Hospitals Section -->
+    <section class="section hospitals-section" id="hospitals">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-hospital"></i>
+                <span data-en="Find Nearby Hospitals" data-hi="नजदीकी अस्पताल खोजें">Find Nearby Hospitals</span>
+            </h2>
+            <p class="section-subtitle" data-en="Locate healthcare facilities in your area" data-hi="अपने क्षेत्र में स्वास्थ्य सुविधाओं का पता लगाएं">Locate healthcare facilities in your area</p>
+            
+            <div class="hospital-finder">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" id="locationInput" data-placeholder-en="Enter your location (city, area, pincode)" data-placeholder-hi="अपना स्थान दर्ज करें (शहर, क्षेत्र, पिनकोड)" placeholder="Enter your location (city, area, pincode)">
+                        <button onclick="findHospitals()" class="search-btn">
+                            <i class="fas fa-search"></i>
+                            <span data-en="Find Hospitals" data-hi="अस्पताल खोजें">Find Hospitals</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hospital-types">
+                    <h3 data-en="Hospital Categories" data-hi="अस्पताल श्रेणियां">Hospital Categories</h3>
+                    <div class="hospital-filters">
+                        <button class="filter-btn active" data-type="all">
+                            <i class="fas fa-hospital"></i>
+                            <span data-en="All Hospitals" data-hi="सभी अस्पताल">All Hospitals</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hospitals-results" id="hospitalsResults">
+                    <div class="default-hospitals">
+                        <h3 data-en="Major Women's Healthcare Facilities in India" data-hi="भारत में प्रमुख महिला स्वास्थ्य सुविधाएं">Major Women's Healthcare Facilities in India</h3>
+                        <div class="hospitals-grid">
+                            <div class="hospital-card">
+                                <div class="hospital-icon">
+                                    <i class="fas fa-hospital"></i>
+                                </div>
+                                <h4>All India Institute of Medical Sciences (AIIMS)</h4>
+                                <p class="hospital-location" data-en="Multiple locations across India" data-hi="भारत भर में कई स्थान">Multiple locations across India</p>
+                                <div class="hospital-specialties">
+                                    <span class="specialty-tag" data-en="Gynecology" data-hi="स्त्री रोग">Gynecology</span>
+                                    <span class="specialty-tag" data-en="Obstetrics" data-hi="प्रसूति विज्ञान">Obstetrics</span>
+                                    <span class="specialty-tag" data-en="Emergency" data-hi="आपातकाल">Emergency</span>
+                                </div>
+                                <div class="hospital-contact">
+                                    <i class="fas fa-phone"></i>
+                                    <span>1800-11-4433</span>
+                                </div>
+                            </div>
+
+                            <div class="hospital-card">
+                                <div class="hospital-icon">
+                                    <i class="fas fa-hospital"></i>
+                                </div>
+                                <h4>Safdarjung Hospital</h4>
+                                <p class="hospital-location" data-en="New Delhi" data-hi="नई दिल्ली">New Delhi</p>
+                                <div class="hospital-specialties">
+                                    <span class="specialty-tag" data-en="Maternity" data-hi="मातृत्व">Maternity</span>
+                                    <span class="specialty-tag" data-en="Women's Health" data-hi="महिला स्वास्थ्य">Women's Health</span>
+                                    <span class="specialty-tag" data-en="24/7 Emergency" data-hi="24/7 आपातकाल">24/7 Emergency</span>
+                                </div>
+                                <div class="hospital-contact">
+                                    <i class="fas fa-phone"></i>
+                                    <span>011-2673-0000</span>
+                                </div>
+                            </div>
+
+                            <div class="hospital-card">
+                                <div class="hospital-icon">
+                                    <i class="fas fa-hospital"></i>
+                                </div>
+                                <h4>King Edward Memorial Hospital</h4>
+                                <p class="hospital-location" data-en="Mumbai" data-hi="मुंबई">Mumbai</p>
+                                <div class="hospital-specialties">
+                                    <span class="specialty-tag" data-en="Gynecology" data-hi="स्त्री रोग">Gynecology</span>
+                                    <span class="specialty-tag" data-en="Obstetrics" data-hi="प्रसूति विज्ञान">Obstetrics</span>
+                                    <span class="specialty-tag" data-en="Neonatal Care" data-hi="नवजात देखभाल">Neonatal Care</span>
+                                </div>
+                                <div class="hospital-contact">
+                                    <i class="fas fa-phone"></i>
+                                    <span>022-2410-7000</span>
+                                </div>
+                            </div>
+
+                            <div class="hospital-card">
+                                <div class="hospital-icon">
+                                    <i class="fas fa-hospital"></i>
+                                </div>
+                                <h4>Government General Hospital</h4>
+                                <p class="hospital-location" data-en="Chennai" data-hi="चेन्नई">Chennai</p>
+                                <div class="hospital-specialties">
+                                    <span class="specialty-tag" data-en="Women's Health" data-hi="महिला स्वास्थ्य">Women's Health</span>
+                                    <span class="specialty-tag" data-en="Emergency" data-hi="आपातकाल">Emergency</span>
+                                    <span class="specialty-tag" data-en="Free Services" data-hi="निःशुल्क सेवाएं">Free Services</span>
+                                </div>
+                                <div class="hospital-contact">
+                                    <i class="fas fa-phone"></i>
+                                    <span>044-2819-3000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-en="Emergency Contacts" data-hi="आपातकालीन संपर्क">Emergency Contacts</h3>
+                    <p data-en="National Emergency: " data-hi="राष्ट्रीय आपातकाल: ">National Emergency: <strong>112</strong></p>
+                    <p data-en="Women Helpline: " data-hi="महिला हेल्पलाइन: ">Women Helpline: <strong>1091</strong></p>
+                    <p data-en="One Stop Centre: " data-hi="वन स्टॉप सेंटर: ">One Stop Centre: <strong>181</strong></p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-en="Quick Links" data-hi="त्वरित लिंक">Quick Links</h3>
+                    <ul>
+                        <li><a href="#emergency" data-en="Emergency Contacts" data-hi="आपातकालीन संपर्क">Emergency Contacts</a></li>
+                        <li><a href="#ngos" data-en="Supporting NGOs" data-hi="सहायक एनजीओ">Supporting NGOs</a></li>
+                        <li><a href="#guidelines" data-en="Government Guidelines" data-hi="सरकारी दिशानिर्देश">Government Guidelines</a></li>
+                        <li><a href="#hospitals" data-en="Nearby Hospitals" data-hi="नजदीकी अस्पताल">Nearby Hospitals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-en="Remember" data-hi="याद रखें">Remember</h3>
+                    <p data-en="You are not alone. Help is always available. Your safety and well-being matter." data-hi="आप अकेले नहीं हैं। मदद हमेशा उपलब्ध है। आपकी सुरक्षा और कल्याण मायने रखता है।">You are not alone. Help is always available. Your safety and well-being matter.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-en="&copy; 2024 Safety and Utility - Women's Safety Hub. All rights reserved." data-hi="&copy; 2024 सुरक्षा और उपयोगिता - महिला सुरक्षा हब। सभी अधिकार सुरक्षित।">&copy; 2024 Safety and Utility - Women's Safety Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="safetyScript.js"></script>
+</body>
+</html>

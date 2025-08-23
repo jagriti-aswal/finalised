@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>✨ Smart Health Reminders — Beautiful & Intuitive</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  
+  :root{
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-card: rgba(255, 255, 255, 0.95);
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-light: #94a3b8;
+    --purple-primary: #8B5CF6;
+    --purple-secondary: #A855F7;
+    --purple-light: #F3E8FF;
+    --purple-accent: #DDD6FE;
+    --green: #10b981;
+    --green-light: #d1fae5;
+    --orange: #f59e0b;
+    --orange-light: #fef3c7;
+    --red: #ef4444;
+    --red-light: #fee2e2;
+    --blue: #3b82f6;
+    --blue-light: #dbeafe;
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --border-radius: 16px;
+    --border-radius-lg: 20px;
+    --border-radius-xl: 24px;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    font-feature-settings: 'cv11', 'ss01', 'ss02';
+  }
+
+  /* Animated background elements */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Floating particles */
+  .particle {
+    position: fixed;
+    color: rgba(255, 255, 255, 0.1);
+    font-size: 24px;
+    animation: float 25s infinite linear;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg) scale(0.8); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100px) rotate(360deg) scale(1.2); opacity: 0; }
+  }
+
+  header {
+    padding: 40px 20px 30px;
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 1;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  header h1 {
+    margin: 0 0 10px;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+  }
+
+  header p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: clamp(16px, 2vw, 18px);
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  .card {
+    grid-column: span 12;
+    background: var(--bg-card);
+    border-radius: var(--border-radius-xl);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-large);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--purple-primary), var(--purple-secondary));
+    border-radius: var(--border-radius-xl) var(--border-radius-xl) 0 0;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-large), 0 0 0 1px rgba(139, 92, 246, 0.1);
+  }
+
+  @media(min-width: 920px) {
+    .card.span-6 { grid-column: span 6; }
+    .card.span-4 { grid-column: span 4; }
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--purple-primary);
+    margin: 0 0 16px;
+    position: relative;
+  }
+
+  .title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--purple-primary), transparent);
+    border-radius: 2px;
+  }
+
+  .sub {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin: 0 0 20px;
+    line-height: 1.5;
+  }
+
+  .row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .row > * {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Enhanced form inputs */
+  input[type="text"], 
+  input[type="time"], 
+  input[type="number"], 
+  select {
+    border: 2px solid #e2e8f0;
+    border-radius: var(--border-radius);
+    padding: 14px 16px;
+    outline: none;
+    background: var(--bg-secondary);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-soft);
+  }
+
+  input:focus, 
+  select:focus {
+    border-color: var(--purple-primary);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12), var(--shadow-soft);
+    transform: translateY(-1px);
+  }
+
+  input::placeholder {
+    color: var(--text-light);
+    font-weight: 400;
+  }
+
+  /* Beautiful buttons */
+  button {
+    border: 0;
+    border-radius: var(--border-radius);
+    padding: 14px 20px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    font-family: inherit;
+    box-shadow: var(--shadow-soft);
+  }
+
+  button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  button:hover::before {
+    left: 100%;
+  }
+
+  .btn {
+    background: linear-gradient(135deg, var(--purple-primary), var(--purple-secondary));
+    color: white;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+  }
+
+  .btn.ghost {
+    background: var(--purple-light);
+    color: var(--purple-primary);
+    border: 2px solid var(--purple-accent);
+  }
+
+  .btn.ghost:hover {
+    background: var(--purple-accent);
+    transform: translateY(-2px);
+  }
+
+  .btn.success {
+    background: linear-gradient(135deg, var(--green), #059669);
+    color: white;
+  }
+
+  .btn.success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+  }
+
+  .btn.warn {
+    background: linear-gradient(135deg, var(--orange), #d97706);
+    color: white;
+  }
+
+  .btn.warn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+  }
+
+  .btn.danger {
+    background: linear-gradient(135deg, var(--red), #dc2626);
+    color: white;
+  }
+
+  .btn.danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+  }
+
+  /* Enhanced list styling */
+  .list {
+    margin-top: 20px;
+    border-top: 2px dashed #e2e8f0;
+    padding-top: 20px;
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 16px;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #f1f5f9;
+    transition: all 0.2s ease;
+  }
+
+  .item:hover {
+    background: #fafbfc;
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: var(--border-radius);
+  }
+
+  /* Beautiful pills/badges */
+  .pill {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .pill.green { 
+    background: linear-gradient(135deg, var(--green), #059669);
+  }
+  
+  .pill.orange { 
+    background: linear-gradient(135deg, var(--orange), #d97706);
+  }
+  
+  .pill.purple { 
+    background: linear-gradient(135deg, var(--purple-primary), var(--purple-secondary));
+  }
+  
+  .pill.gray { 
+    background: linear-gradient(135deg, #64748b, #475569);
+  }
+
+  .pill.blue {
+    background: linear-gradient(135deg, var(--blue), #2563eb);
+  }
+
+  .muted {
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* Enhanced progress bar */
+  .progress {
+    height: 16px;
+    background: #f1f5f9;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--purple-primary), var(--purple-secondary));
+    width: 0%;
+    border-radius: 20px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  .bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shine 2s infinite;
+  }
+
+  @keyframes shine {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--purple-light);
+    padding: 16px 20px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--purple-accent);
+  }
+
+  .stat b {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--purple-primary);
+  }
+
+  /* Toast notifications */
+  .toast {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1000;
+    max-width: 400px;
+  }
+
+  .toast .t {
+    background: rgba(30, 41, 59, 0.95);
+    color: white;
+    padding: 16px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-large);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 500;
+    animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @keyframes slideIn {
+    from { transform: translateX(100%) scale(0.8); opacity: 0; }
+    to { transform: translateX(0) scale(1); opacity: 1; }
+  }
+
+  .small {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .small input {
+    margin-top: 6px;
+  }
+
+  .divider {
+    height: 2px;
+    background: linear-gradient(90deg, var(--purple-light), transparent);
+    margin: 24px 0;
+    border-radius: 1px;
+  }
+
+  /* Enhanced hydration section */
+  #card-hydration .stat {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    border-color: #93c5fd;
+  }
+
+  #card-hydration .stat b {
+    color: var(--blue);
+  }
+
+  #waterBar {
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+  }
+
+  /* Enhanced workout section */
+  #card-workout .pill.purple {
+    background: linear-gradient(135deg, #f97316, #ea580c);
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    main {
+      padding: 0 16px 30px;
+    }
+    
+    .card {
+      padding: 24px 20px;
+    }
+    
+    .row {
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .item {
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+    }
+    
+    .item > div:nth-child(3),
+    .item > div:nth-child(4) {
+      grid-column: 1 / -1;
+      margin-top: 12px;
+    }
+
+    .toast {
+      right: 16px;
+      bottom: 16px;
+      max-width: calc(100vw - 32px);
+    }
+  }
+
+  /* Special styling for specific elements */
+  .water-goal-input {
+    background: linear-gradient(135deg, var(--blue-light), #dbeafe);
+    border-color: #93c5fd;
+  }
+
+  .med-time-display {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    background: var(--purple-light);
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: 1px solid var(--purple-accent);
+  }
+
+  /* Loading states and micro-interactions */
+  button:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  input:invalid {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--purple-primary), var(--purple-secondary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--purple-secondary), var(--purple-primary));
+  }
+</style>
+</head>
+<body>
+  <!-- Floating particles -->
+  <div class="particle" style="left: 5%; animation-delay: 0s;">💧</div>
+  <div class="particle" style="left: 15%; animation-delay: 4s;">💊</div>
+  <div class="particle" style="left: 25%; animation-delay: 8s;">🏃‍♀️</div>
+  <div class="particle" style="left: 35%; animation-delay: 12s;">🍽️</div>
+  <div class="particle" style="left: 45%; animation-delay: 16s;">✨</div>
+  <div class="particle" style="left: 55%; animation-delay: 20s;">💜</div>
+  <div class="particle" style="left: 65%; animation-delay: 24s;">🌟</div>
+  <div class="particle" style="left: 75%; animation-delay: 28s;">💎</div>
+  <div class="particle" style="left: 85%; animation-delay: 32s;">🌸</div>
+  <div class="particle" style="left: 95%; animation-delay: 36s;">🦋</div>
+
+<header>
+  <h1>✨ Smart Health Reminders</h1>
+  <p>Your beautiful companion for <b>wellness</b>, <b>hydration</b>, <b>fitness</b> & <b>nutrition</b> 💜</p>
+</header>
+
+<main class="grid">
+
+  <!-- Hydration -->
+  <section class="card span-6" id="card-hydration">
+    <h3 class="title">💧 Hydration Tracker</h3>
+    <p class="sub">Stay perfectly hydrated with smart reminders and beautiful progress tracking.</p>
+    
+    <div class="row">
+      <label class="small">Daily Goal (glasses)<br>
+        <input type="number" id="waterGoal" class="water-goal-input" min="1" max="20" value="8">
+      </label>
+      <label class="small">Glass Size (ml)<br>
+        <input type="number" id="glassSize" min="100" step="50" value="250">
+      </label>
+      <div class="stat">
+        <span>💧</span>
+        <b id="waterCount">0</b>
+        <span>/<span id="waterGoalText">8</span> glasses</span>
+      </div>
+    </div>
+    
+    <div style="margin: 20px 0" class="progress">
+      <div class="bar" id="waterBar"></div>
+    </div>
+    
+    <div class="row">
+      <button class="btn" id="btnAddGlass">💧 Add Glass</button>
+      <button class="btn ghost" id="btnUndoGlass">↶ Undo</button>
+      <button class="btn warn" id="btnWaterReminder">⏰ Remind Every 2h</button>
+      <button class="btn danger" id="btnWaterReset">🔄 Reset Today</button>
+    </div>
+    
+    <div class="divider"></div>
+    <div class="muted small">💡 <strong>Pro tip:</strong> Aim for 2-3L daily. Your goal auto-resets each day for a fresh start!</div>
+  </section>
+
+  <!-- Medications -->
+  <section class="card span-6" id="card-meds">
+    <h3 class="title">💊 Medications & Supplements</h3>
+    <p class="sub">Never miss a dose with smart notifications and easy tracking.</p>
+    
+    <div class="row">
+      <input type="text" id="medName" placeholder="e.g., Vitamin D, Metformin, Fish Oil">
+      <input type="time" id="medTime" value="08:00">
+      <select id="medWhen">
+        <option value="Morning">🌅 Morning</option>
+        <option value="Afternoon">☀️ Afternoon</option>
+        <option value="Evening">🌆 Evening</option>
+        <option value="Night">🌙 Night</option>
+      </select>
+      <button class="btn" id="btnAddMed">➕ Add Med</button>
+    </div>
+    
+    <div class="list" id="medList"></div>
+    
+    <div class="divider"></div>
+    <div class="row">
+      <button class="btn success" id="btnEnableNotif">🔔 Enable Notifications</button>
+      <span class="muted small">We'll gently remind you when it's time for your medications.</span>
+    </div>
+  </section>
+
+  <!-- Workout -->
+  <section class="card span-6" id="card-workout">
+    <h3 class="title">🏃‍♀️ Fitness & Movement</h3>
+    <p class="sub">Build healthy exercise habits with personalized workout reminders.</p>
+    
+    <div class="row">
+      <select id="woType">
+        <option value="Walk 20 min">🚶‍♀️ Walk 20 min</option>
+        <option value="Yoga 15 min">🧘‍♀️ Yoga 15 min</option>
+        <option value="Strength 20 min">💪 Strength 20 min</option>
+        <option value="Cycling 30 min">🚴‍♀️ Cycling 30 min</option>
+        <option value="Swimming 25 min">🏊‍♀️ Swimming 25 min</option>
+        <option value="Dance 20 min">💃 Dance 20 min</option>
+      </select>
+      <input type="time" id="woTime" value="18:30">
+      <button class="btn" id="btnSaveWorkout">💾 Save Plan</button>
+      <button class="btn success" id="btnDoneWorkout">✅ Mark Done</button>
+    </div>
+    
+    <div style="margin-top: 20px; display: flex; gap: 20px; flex-wrap: wrap;">
+      <div class="stat" style="flex: 1;">
+        <span>📅</span>
+        <div>
+          <div class="small">Today's Plan</div>
+          <div id="woPlan" style="font-weight: 600;">No plan yet</div>
+        </div>
+      </div>
+      <div class="stat" style="flex: 1;">
+        <span>🔥</span>
+        <div>
+          <div class="small">Current Streak</div>
+          <div style="font-weight: 600;"><span id="woStreak">0</span> days</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diet & Meals -->
+  <section class="card span-6" id="card-diet">
+    <h3 class="title">🍽️ Nutrition & Meal Times</h3>
+    <p class="sub">Maintain regular eating patterns with gentle meal reminders.</p>
+    
+    <div class="row">
+      <label class="small">🌅 Breakfast<br>
+        <input type="time" id="tBreakfast" value="08:30">
+      </label>
+      <label class="small">☀️ Lunch<br>
+        <input type="time" id="tLunch" value="13:30">
+      </label>
+      <label class="small">🍎 Snack<br>
+        <input type="time" id="tSnack" value="17:00">
+      </label>
+      <label class="small">🌆 Dinner<br>
+        <input type="time" id="tDinner" value="20:00">
+      </label>
+    </div>
+    
+    <div class="row" style="margin-top: 20px">
+      <button class="btn" id="btnSaveMeals">💾 Save Meal Schedule</button>
+      <span class="muted small">We'll remind you at your perfect meal times.</span>
+    </div>
+    
+    <div class="list" id="mealList" style="margin-top: 20px"></div>
+  </section>
+
+</main>
+
+<!-- Toast Notifications -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ========= Enhanced Utilities ========= */
+const $ = (s, d=document)=>d.querySelector(s);
+const $$ = (s, d=document)=>Array.from(d.querySelectorAll(s));
+const store = {
+  get(k, fallback){ 
+    try{ 
+      return JSON.parse(localStorage.getItem(k)) ?? fallback 
+    } catch{ 
+      return fallback 
+    }
+  },
+  set(k,v){ 
+    localStorage.setItem(k, JSON.stringify(v)) 
+  }
+};
+const todayKey = ()=> new Date().toISOString().slice(0,10); // YYYY-MM-DD
+const toastBox = $("#toast");
+
+function toast(msg, type = 'default'){ 
+  const el = document.createElement('div'); 
+  el.className = 't'; 
+  el.innerHTML = `<div style="display: flex; align-items: center; gap: 8px;">
+    ${type === 'success' ? '✅' : type === 'warning' ? '⚠️' : type === 'error' ? '❌' : '💜'} 
+    <span>${msg}</span>
+  </div>`;
+  toastBox.appendChild(el); 
+  setTimeout(()=>{
+    el.style.transform = 'translateX(100%) scale(0.8)';
+    el.style.opacity = '0';
+    setTimeout(()=>el.remove(), 300);
+  }, 4200);
+}
+
+function nowHM(){ 
+  const d=new Date(); 
+  return d.toTimeString().slice(0,5) 
+} // "HH:MM"
+
+function sameHM(a,b){ 
+  return a===b 
+} // minute precision
+
+/* ========= Enhanced Hydration ========= */
+const waterStateKey = "rem.water";
+let water = store.get(waterStateKey, { byDate:{}, celebratedToday: false });
+
+const waterGoalEl = $("#waterGoal");
+const waterGoalText = $("#waterGoalText");
+const waterCountEl = $("#waterCount");
+const waterBar = $("#waterBar");
+
+function getWaterToday(){ 
+  return water.byDate[todayKey()] ?? { 
+    goal: parseInt(waterGoalEl.value||8), 
+    count: 0, 
+    ml: parseInt($("#glassSize").value||250) 
+  } 
+}
+
+function saveWaterToday(obj){ 
+  water.byDate[todayKey()] = obj; 
+  store.set(waterStateKey, water);
+}
+
+function renderWater(){
+  const t = getWaterToday();
+  waterGoalText.textContent = t.goal;
+  waterCountEl.textContent = t.count;
+  const pct = Math.min(100, Math.round((t.count / t.goal)*100));
+  waterBar.style.width = pct + "%";
+  
+  if (pct >= 100) {
+    waterBar.style.background = 'linear-gradient(90deg, #10b981, #059669)';
+    if (!water.celebratedToday) {
+      celebrateWaterGoal();
+      water.celebratedToday = true;
+      store.set(waterStateKey, water);
+    }
+  } else {
+    waterBar.style.background = 'linear-gradient(90deg, #3b82f6, #1d4ed8)';
+  }
+}
+
+function celebrateWaterGoal() {
+  const celebration = document.createElement('div');
+  celebration.style.cssText = `
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.5);
+    background: linear-gradient(135deg, #10b981, #059669); color: white;
+    padding: 20px 40px; border-radius: 12px; font-size: 18px; font-weight: bold;
+    z-index: 1000; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    animation: waterCelebrate 3s ease-out forwards;
+  `;
+  celebration.innerHTML = '💧🎉 Hydration Goal Reached! 🎉💧';
+  document.body.appendChild(celebration);
+  
+  setTimeout(() => celebration.remove(), 3000);
+  toast('🎉 Daily hydration goal achieved! Great work!', 'success');
+}
+
+function addWater(){
+  const t = getWaterToday();
+  t.count++;
+  saveWaterToday(t);
+  renderWater();
+  toast(`💧 Glass added! ${t.count}/${t.goal} completed`);
+}
+
+function undoWater(){
+  const t = getWaterToday();
+  if(t.count > 0){
+    t.count--;
+    saveWaterToday(t);
+    renderWater();
+    toast('↶ Glass removed');
+  }
+}
+
+function resetWaterToday(){
+  const t = getWaterToday();
+  t.count = 0;
+  water.celebratedToday = false;
+  saveWaterToday(t);
+  store.set(waterStateKey, water);
+  renderWater();
+  toast('🔄 Daily water count reset', 'warning');
+}
+
+function updateWaterGoal(){
+  const t = getWaterToday();
+  const newGoal = parseInt(waterGoalEl.value);
+  if(newGoal > 0 && newGoal !== t.goal){
+    t.goal = newGoal;
+    water.celebratedToday = false;
+    saveWaterToday(t);
+    renderWater();
+    toast(`🎯 Goal updated to ${newGoal} glasses`);
+  }
+}
+
+/* ========= Enhanced Medications ========= */
+const medsKey = "rem.meds";
+let meds = store.get(medsKey, []);
+
+function renderMeds(){
+  const list = $("#medList");
+  if(!meds.length) {
+    list.innerHTML = '<div class="muted" style="text-align: center; padding: 20px;">No medications added yet. Add your first one above! 💊</div>';
+    return;
+  }
+  
+  list.innerHTML = meds.map((med, i) => `
+    <div class="item">
+      <div>
+        <strong>${med.name}</strong><br>
+        <span class="small med-time-display">${med.time}</span>
+      </div>
+      <span class="pill ${med.when === 'Morning' ? 'blue' : med.when === 'Afternoon' ? 'orange' : med.when === 'Evening' ? 'purple' : 'gray'}">${med.when}</span>
+      <button class="btn success" onclick="takeMed(${i})">✅ Take</button>
+      <button class="btn danger" onclick="deleteMed(${i})">🗑️</button>
+    </div>
+  `).join('');
+}
+
+function addMed(){
+  const name = $("#medName").value.trim();
+  const time = $("#medTime").value;
+  const when = $("#medWhen").value;
+  
+  if(!name) {
+    toast('Please enter medication name', 'error');
+    return;
+  }
+  
+  meds.push({name, time, when, id: Date.now()});
+  store.set(medsKey, meds);
+  renderMeds();
+  
+  $("#medName").value = '';
+  toast(`💊 ${name} added successfully!`, 'success');
+}
+
+function takeMed(index){
+  const med = meds[index];
+  toast(`✅ ${med.name} taken at ${nowHM()}`, 'success');
+}
+
+function deleteMed(index){
+  const medName = meds[index].name;
+  meds.splice(index, 1);
+  store.set(medsKey, meds);
+  renderMeds();
+  toast(`🗑️ ${medName} removed`, 'warning');
+}
+
+/* ========= Enhanced Workouts ========= */
+const workoutKey = "rem.workout";
+let workoutData = store.get(workoutKey, {
+  plan: null,
+  time: '18:30',
+  streak: 0,
+  lastDone: null,
+  history: {}
+});
+
+function renderWorkout(){
+  $("#woPlan").textContent = workoutData.plan || 'No plan yet';
+  $("#woStreak").textContent = workoutData.streak;
+  $("#woTime").value = workoutData.time;
+}
+
+function saveWorkoutPlan(){
+  const type = $("#woType").value;
+  const time = $("#woTime").value;
+  
+  workoutData.plan = type;
+  workoutData.time = time;
+  store.set(workoutKey, workoutData);
+  renderWorkout();
+  
+  toast(`💾 Workout plan saved: ${type} at ${time}`, 'success');
+}
+
+function markWorkoutDone(){
+  const today = todayKey();
+  
+  if(workoutData.lastDone === today) {
+    toast('Already marked as done today! 🎉', 'warning');
+    return;
+  }
+  
+  // Check if streak continues (done yesterday or starting fresh)
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  const yesterdayKey = yesterday.toISOString().slice(0,10);
+  
+  if(workoutData.lastDone === yesterdayKey || workoutData.streak === 0) {
+    workoutData.streak++;
+  } else {
+    workoutData.streak = 1; // Reset streak
+  }
+  
+  workoutData.lastDone = today;
+  workoutData.history[today] = {
+    completed: true,
+    type: workoutData.plan,
+    time: nowHM()
+  };
+  
+  store.set(workoutKey, workoutData);
+  renderWorkout();
+  
+  toast(`🔥 Workout completed! ${workoutData.streak} day streak!`, 'success');
+}
+
+/* ========= Enhanced Meals ========= */
+const mealsKey = "rem.meals";
+let mealTimes = store.get(mealsKey, {
+  breakfast: '08:30',
+  lunch: '13:30',
+  snack: '17:00',
+  dinner: '20:00'
+});
+
+function renderMeals(){
+  $("#tBreakfast").value = mealTimes.breakfast;
+  $("#tLunch").value = mealTimes.lunch;
+  $("#tSnack").value = mealTimes.snack;
+  $("#tDinner").value = mealTimes.dinner;
+  
+  const list = $("#mealList");
+  const meals = [
+    {name: '🌅 Breakfast', time: mealTimes.breakfast, key: 'breakfast'},
+    {name: '☀️ Lunch', time: mealTimes.lunch, key: 'lunch'},
+    {name: '🍎 Snack', time: mealTimes.snack, key: 'snack'},
+    {name: '🌆 Dinner', time: mealTimes.dinner, key: 'dinner'}
+  ];
+  
+  list.innerHTML = meals.map(meal => `
+    <div class="item">
+      <div>
+        <strong>${meal.name}</strong><br>
+        <span class="small med-time-display">${meal.time}</span>
+      </div>
+      <span class="pill blue">Scheduled</span>
+      <button class="btn success" onclick="logMeal('${meal.key}')">🍽️ Eaten</button>
+    </div>
+  `).join('');
+}
+
+function saveMeals(){
+  mealTimes.breakfast = $("#tBreakfast").value;
+  mealTimes.lunch = $("#tLunch").value;
+  mealTimes.snack = $("#tSnack").value;
+  mealTimes.dinner = $("#tDinner").value;
+  
+  store.set(mealsKey, mealTimes);
+  renderMeals();
+  toast('💾 Meal schedule saved!', 'success');
+}
+
+function logMeal(mealType){
+  const mealNames = {
+    breakfast: '🌅 Breakfast',
+    lunch: '☀️ Lunch', 
+    snack: '🍎 Snack',
+    dinner: '🌆 Dinner'
+  };
+  
+  toast(`🍽️ ${mealNames[mealType]} logged at ${nowHM()}`, 'success');
+}
+
+/* ========= Notifications & Reminders ========= */
+let notificationPermission = false;
+let waterReminderInterval = null;
+
+function requestNotificationPermission(){
+  if('Notification' in window) {
+    Notification.requestPermission().then(permission => {
+      notificationPermission = permission === 'granted';
+      if(notificationPermission) {
+        toast('🔔 Notifications enabled! We\'ll remind you gently.', 'success');
+      } else {
+        toast('⚠️ Please enable notifications for reminders', 'warning');
+      }
+    });
+  } else {
+    toast('❌ Notifications not supported in this browser', 'error');
+  }
+}
+
+function showNotification(title, body, icon = '💜'){
+  if(notificationPermission) {
+    new Notification(title, {
+      body: body,
+      icon: `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">${icon}</text></svg>`,
+      badge: `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">${icon}</text></svg>`
+    });
+  }
+}
+
+function startWaterReminders(){
+  if(waterReminderInterval) {
+    clearInterval(waterReminderInterval);
+    waterReminderInterval = null;
+    toast('⏰ Water reminders stopped', 'warning');
+    return;
+  }
+  
+  waterReminderInterval = setInterval(() => {
+    const t = getWaterToday();
+    if(t.count < t.goal) {
+      showNotification('💧 Hydration Reminder', `Time for water! ${t.count}/${t.goal} glasses today`, '💧');
+      toast('💧 Reminder: Time to drink water!');
+    }
+  }, 2 * 60 * 60 * 1000); // 2 hours
+  
+  toast('⏰ Water reminders started (every 2 hours)', 'success');
+}
+
+/* ========= Auto-reminders based on time ========= */
+function checkTimeBasedReminders(){
+  const now = nowHM();
+  
+  // Check medication times
+  meds.forEach(med => {
+    if(sameHM(med.time, now)) {
+      showNotification('💊 Medication Reminder', `Time to take ${med.name}`, '💊');
+      toast(`💊 Reminder: Time for ${med.name}`);
+    }
+  });
+  
+  // Check meal times
+  const mealNames = {
+    breakfast: '🌅 Breakfast time!',
+    lunch: '☀️ Lunch time!',
+    snack: '🍎 Snack time!',
+    dinner: '🌆 Dinner time!'
+  };
+  
+  Object.entries(mealTimes).forEach(([meal, time]) => {
+    if(sameHM(time, now)) {
+      showNotification('🍽️ Meal Reminder', mealNames[meal], '🍽️');
+      toast(`🍽️ ${mealNames[meal]}`);
+    }
+  });
+  
+  // Check workout time
+  if(workoutData.plan && sameHM(workoutData.time, now)) {
+    showNotification('🏃‍♀️ Workout Time', `Time for ${workoutData.plan}`, '🏃‍♀️');
+    toast(`🏃‍♀️ Workout time: ${workoutData.plan}!`);
+  }
+}
+
+/* ========= Daily Reset Logic ========= */
+function checkDailyReset(){
+  const today = todayKey();
+  const lastReset = store.get('lastResetDate', '');
+  
+  if(lastReset !== today) {
+    // Reset daily celebration flags
+    water.celebratedToday = false;
+    store.set(waterStateKey, water);
+    store.set('lastResetDate', today);
+  }
+}
+
+/* ========= Event Listeners ========= */
+$("#btnAddGlass").addEventListener('click', addWater);
+$("#btnUndoGlass").addEventListener('click', undoWater);
+$("#btnWaterReset").addEventListener('click', resetWaterToday);
+$("#btnWaterReminder").addEventListener('click', startWaterReminders);
+$("#waterGoal").addEventListener('change', updateWaterGoal);
+
+$("#btnAddMed").addEventListener('click', addMed);
+$("#btnEnableNotif").addEventListener('click', requestNotificationPermission);
+
+$("#btnSaveWorkout").addEventListener('click', saveWorkoutPlan);
+$("#btnDoneWorkout").addEventListener('click', markWorkoutDone);
+
+$("#btnSaveMeals").addEventListener('click', saveMeals);
+
+// Add keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if(e.ctrlKey || e.metaKey) return;
+  
+  switch(e.key.toLowerCase()) {
+    case 'w':
+      e.preventDefault();
+      addWater();
+      break;
+    case 'm':
+      if($("#medName") === document.activeElement) return;
+      e.preventDefault();
+      markWorkoutDone();
+      break;
+  }
+});
+
+/* ========= CSS Animations ========= */
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes waterCelebrate {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    20% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+  }
+`;
+document.head.appendChild(style);
+
+/* ========= Initialize App ========= */
+function initApp(){
+  checkDailyReset();
+  renderWater();
+  renderMeds();
+  renderWorkout(); 
+  renderMeals();
+  
+  // Check for time-based reminders every minute
+  setInterval(checkTimeBasedReminders, 60000);
+  
+  toast('✨ Smart Health Reminders loaded successfully!', 'success');
+}
+
+// Start the app when page loads
+document.addEventListener('DOMContentLoaded', initApp);
+
+// Auto-save form changes
+$("#glassSize").addEventListener('change', () => {
+  const t = getWaterToday();
+  t.ml = parseInt($("#glassSize").value);
+  saveWaterToday(t);
+});
+
+</script>
+</body>
+</html>
